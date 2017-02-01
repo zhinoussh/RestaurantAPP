@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/lyt_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_swap_left"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bnt_swap"
+            android:layout_weight=".1"
+            android:background="@drawable/previous" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"
+            android:gravity="center_horizontal"
+            android:text="@string/ChooseCategory" />
+
+        <Button
+            android:id="@+id/btn_swap_right"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bnt_swap"
+            android:layout_weight=".1"
+            android:background="@drawable/next" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/lyt_buttons"></android.support.v4.view.ViewPager>
+</RelativeLayout>
