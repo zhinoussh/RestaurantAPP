@@ -3,5 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bnt_swap">30dp</dimen>
+    <dimen name="image">300dp</dimen>
+    <dimen name="CategoryFontSize">15pt</dimen>
 
 </resources>

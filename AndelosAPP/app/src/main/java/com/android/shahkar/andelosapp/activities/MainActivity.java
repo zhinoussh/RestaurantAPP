@@ -5,16 +5,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.CategoryPagerAdapter;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.android.shahkar.andelosapp.network.CategoryService;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         categoryServcie = new CategoryService();
 
-        List<RestaurantCategory> list_category = categoryServcie.CategoryList(new CategoryService.ResultCallback() {
+
+        categoryServcie.CategoryList(new CategoryService.ResultCallback() {
             @Override
             public void OnResultReady(List<RestaurantCategory> categoryList) {
                 if (categoryList != null) {
