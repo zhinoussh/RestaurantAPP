@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:id="@+id/lyt_buttons"
@@ -20,20 +13,31 @@
 
         <Button
             android:id="@+id/btn_swap_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/previous"/>
+            android:layout_width="0dp"
+            android:layout_weight=".1"
+            android:layout_height="@dimen/bnt_swap"
+            android:background="@drawable/previous"
+            android:onClick="btnSwapLeft_Click"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight=".8"
             android:layout_height="wrap_content"
             android:text="@string/ChooseCategory"
-            />
+            android:gravity="center_horizontal" />
 
         <Button
             android:id="@+id/btn_swap_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/next"/>
+            android:layout_width="0dp"
+            android:layout_weight=".1"
+            android:layout_height="@dimen/bnt_swap"
+            android:background="@drawable/next"
+            android:onClick="btnSwapRight_Click"/>
     </LinearLayout>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/lyt_buttons">
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>
