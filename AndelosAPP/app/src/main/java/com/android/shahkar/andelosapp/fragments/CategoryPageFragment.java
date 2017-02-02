@@ -14,9 +14,14 @@ import android.widget.Toast;
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.CategoryPagerAdapter;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
+import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.CategoryService;
+import com.android.shahkar.andelosapp.network.RestService;
+import com.android.shahkar.andelosapp.network.ResultCallBack;
 
 import java.util.List;
+
+import retrofit2.Call;
 
 
 /**
@@ -24,7 +29,6 @@ import java.util.List;
  */
 public class CategoryPageFragment extends Fragment {
 
-    private CategoryService categoryServcie;
     private static int swap_position=0;
     private ViewPager pager_category;
     private int categoryCount=0;
@@ -39,21 +43,23 @@ public class CategoryPageFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView=inflater.inflate(R.layout.fragment_category_page, container, false);
-        categoryServcie = new CategoryService();
-        categoryServcie.CategoryList(new CategoryService.ResultCallback() {
-            @Override
-            public void OnResultReady(List<RestaurantCategory> categoryList) {
-                if (categoryList != null) {
-                    categoryCount=categoryList.size();
-                    pager_category = (ViewPager) fragmentView.findViewById(R.id.pager_category);
-                    PagerAdapter da = new CategoryPagerAdapter(getFragmentManager(), categoryList);
-                    pager_category.setAdapter(da);
-                }
-                else
-                    Toast.makeText(getActivity().getBaseContext(),"no category",Toast.LENGTH_LONG).show();
-            }
-        });
 
+        APIService api= RestService.getAPIService();
+        if(api!=null) {
+            CategoryService service = new CategoryService(api.getCategoryList());
+            service.FetchList(new ResultCallBack<RestaurantCategory>() {
+                @Override
+                public void OnResultReady(List<RestaurantCategory> categoryList) {
+                    if (categoryList != null) {
+                        categoryCount = categoryList.size();
+                        pager_category = (ViewPager) fragmentView.findViewById(R.id.pager_category);
+                        PagerAdapter da = new CategoryPagerAdapter(getFragmentManager(), categoryList);
+                        pager_category.setAdapter(da);
+                    } else
+                        Toast.makeText(getActivity().getBaseContext(), "no category", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
         Button swapRightButton=(Button)fragmentView.findViewById(R.id.btn_swap_right);
         swapRightButton.setOnClickListener(new View.OnClickListener() {
             @Override

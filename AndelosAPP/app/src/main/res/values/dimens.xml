@@ -6,5 +6,6 @@
     <dimen name="image">300dp</dimen>
     <dimen name="CategoryFontSize">15pt</dimen>
     <dimen name="PrimaryFontSize">10pt</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>
