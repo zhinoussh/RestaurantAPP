@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FrameLayout subCategoryContainer=(FrameLayout)findViewById(R.id.SubCategory_fragment_container);
+        isWideScreen=(subCategoryContainer!=null);
 
 
     }

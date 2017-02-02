@@ -1,7 +1,6 @@
 package com.android.shahkar.andelosapp.fragments;
 
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.activities.*;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +28,7 @@ public class CategoryFragment extends Fragment {
         // Required empty public constructor
     }
 
+
     public static CategoryFragment newInstance(RestaurantCategory cat) {
 
         Bundle args = new Bundle();
@@ -37,24 +40,31 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         View rootView=inflater.inflate(R.layout.fragment_category, container, false);
         try {
             Bundle args = getArguments();
-            RestaurantCategory cat = args.getParcelable(CATEGORY_KEY);
+            final RestaurantCategory cat = args.getParcelable(CATEGORY_KEY);
 
             TextView txt_categoryName = (TextView) rootView.findViewById(R.id.txt_CategoryName);
             txt_categoryName.setText(cat.getCategoryName());
+            txt_categoryName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showSubCategoryList(cat.getCategoryId());
+                }
+            });
 
             ImageView img_category = (ImageView) rootView.findViewById(R.id.img_category);
-
-            Context c = getActivity().getApplicationContext();
-
-            Picasso.with(c)
+            Picasso.with(getActivity().getApplicationContext())
                     .load(PHOTO_BASE_URL+cat.getCategoryId()+".jpg")
                     .fit().into(img_category);
 
+            img_category.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showSubCategoryList(cat.getCategoryId());
+                }
+            });
         }
         catch (Exception ex)
         {
@@ -62,6 +72,24 @@ public class CategoryFragment extends Fragment {
         }
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    private void showSubCategoryList(int CategoryID) {
+
+        if(MainActivity.isWideScreen)
+        {
+//            getFragmentManager()
+//                    .beginTransaction()
+//                    .add(R.id.SubCategory_fragment_container,).commit();
+            Toast.makeText(getActivity().getBaseContext(),"RestaurantMenuItem Fragment"
+                    ,Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Intent MenuIntent=new Intent(getActivity().getBaseContext(), MenuActivity.class);
+           // MenuIntent.putExtra("CategoryID",CategoryID);
+            startActivity(MenuIntent);
+        }
     }
 
 }
