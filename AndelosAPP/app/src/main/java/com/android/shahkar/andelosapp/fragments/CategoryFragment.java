@@ -87,7 +87,7 @@ public class CategoryFragment extends Fragment {
         else
         {
             Intent MenuIntent=new Intent(getActivity().getBaseContext(), MenuActivity.class);
-           // MenuIntent.putExtra("CategoryID",CategoryID);
+            MenuIntent.putExtra("CategoryID",CategoryID);
             startActivity(MenuIntent);
         }
     }

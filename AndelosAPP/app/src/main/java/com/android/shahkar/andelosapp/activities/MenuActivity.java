@@ -2,6 +2,7 @@ package com.android.shahkar.andelosapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.fragments.MenuListFragment;
@@ -13,11 +14,20 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-//        int CategoryID= (int) getIntent().getExtras().get("CategoryID");
-//        MenuListFragment menu_fragment=MenuListFragment.newInstance(CategoryID);
-//        getFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.fragment_menu,menu_fragment)
-//                .commit();
+        try {
+            int CategoryID =getIntent().getIntExtra("CategoryID",0);
+            Bundle b=new Bundle();
+            b.putInt("CategoryID",CategoryID);
+            MenuListFragment menu_fragment =new MenuListFragment();
+            menu_fragment.setArguments(b);
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.menu_fragment_container, menu_fragment)
+                    .commit();
+        }
+        catch (Exception ex)
+        {
+            Log.d("Load Menu Fragment",ex.toString());
+        }
     }
 }

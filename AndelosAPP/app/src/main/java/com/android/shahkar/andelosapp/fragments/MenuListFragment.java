@@ -28,14 +28,6 @@ public class MenuListFragment extends ListFragment {
         // Required empty public constructor
     }
 
-    public static MenuListFragment newInstance(int CategoryID) {
-        Bundle args = new Bundle();
-        args.putInt("CategoryID",CategoryID);
-        MenuListFragment fragment = new MenuListFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,10 +35,11 @@ public class MenuListFragment extends ListFragment {
         View rootView = inflater.inflate(R.layout.fragment_menu_list, container, false);
         try {
 
-           APIService api = RestService.getAPIService();
-            //int CategoryID=getArguments().getInt("CategoryID");
-            if (api != null) {
-                MenuService service = new MenuService(api.getMenuList(1));
+            APIService api = RestService.getAPIService();
+            int CategoryID = getArguments().getInt("CategoryID");
+            if (api != null && CategoryID > 0) {
+
+                MenuService service = new MenuService(api.getMenuList(CategoryID));
                 service.FetchList(new ResultCallBack<RestaurantMenuItem>() {
                     @Override
                     public void OnResultReady(List<RestaurantMenuItem> return_list) {
@@ -57,7 +50,7 @@ public class MenuListFragment extends ListFragment {
                 });
             }
         } catch (Exception ex) {
-            Log.d("OnSubCategory", ex.toString());
+            Log.d("OnMenuFragment: ", ex.toString());
         }
         return rootView;
     }

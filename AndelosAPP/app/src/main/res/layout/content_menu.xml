@@ -3,14 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frm_menu_fragment"
+    android:id="@+id/menu_fragment_container"
     tools:context=".activities.MenuActivity"
     tools:showIn="@layout/activity_menu">
 
-    <fragment
-        android:id="@+id/fragment_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        class="com.android.shahkar.andelosapp.fragments.MenuListFragment">
-    </fragment>
 </FrameLayout>
