@@ -16,14 +16,14 @@ public class RestService {
     public static APIService getAPIService() {
         try {
             if (retrofit == null) {
-
                 OkHttpClient client = new OkHttpClient.Builder()
-                        .connectTimeout(10, TimeUnit.SECONDS)
+                        .connectTimeout(60, TimeUnit.SECONDS)
                         .readTimeout(60,TimeUnit.SECONDS).build();
 
                 retrofit = new Retrofit.Builder()
-                        .addConverterFactory(GsonConverterFactory.create())
                         .baseUrl(BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .client(client)
                         .build();
             }
             return retrofit.create(APIService.class);

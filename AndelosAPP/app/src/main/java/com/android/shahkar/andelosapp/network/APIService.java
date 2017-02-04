@@ -9,9 +9,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-/**
- * Created by User on 1/29/2017.
- */
 public interface APIService {
 
     @GET("Category")

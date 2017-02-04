@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
@@ -44,6 +45,8 @@ public class CategoryPageFragment extends Fragment {
 
         final View fragmentView=inflater.inflate(R.layout.fragment_category_page, container, false);
 
+        ProgressBar p= (ProgressBar) fragmentView.findViewById(R.id.category_progress);
+        p.setVisibility(View.VISIBLE);
         APIService api= RestService.getAPIService();
         if(api!=null) {
             CategoryService service = new CategoryService(api.getCategoryList());
@@ -58,7 +61,7 @@ public class CategoryPageFragment extends Fragment {
                     } else
                         Toast.makeText(getActivity().getBaseContext(), "no category", Toast.LENGTH_LONG).show();
                 }
-            });
+            },p);
         }
         Button swapRightButton=(Button)fragmentView.findViewById(R.id.btn_swap_right);
         swapRightButton.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,8 @@
 package com.android.shahkar.andelosapp.network;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import java.util.List;
@@ -17,7 +19,7 @@ public class FetchListService<T>  {
         call=callAPI;
     }
 
-    public List<T> FetchList(final ResultCallBack<T> resultCallback){
+    public List<T> FetchList(final ResultCallBack<T> resultCallback, final ProgressBar progress){
 
         if (call != null) {
 
@@ -25,6 +27,7 @@ public class FetchListService<T>  {
                 @Override
                 public void onResponse(Call<List<T>> call, Response<List<T>> response) {
                     try {
+                        progress.setVisibility(View.INVISIBLE);
                         if (response.isSuccessful()) {
                             fetchList = response.body();
                             resultCallback.OnResultReady(fetchList);
@@ -39,6 +42,7 @@ public class FetchListService<T>  {
 
                 @Override
                 public void onFailure(Call<List<T>> call, Throwable t) {
+                    progress.setVisibility(View.INVISIBLE);
                     Log.d("OnResponse", "Fail to Response: " + t.toString());
                 }
             });
