@@ -17,7 +17,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="@dimen/CategoryFontSize"
-        android:textColor="@color/FontColor"/>
+        android:textColor="@color/PrimaryFontColor"/>
 
     <ImageView
         android:id="@+id/img_category"

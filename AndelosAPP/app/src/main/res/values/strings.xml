@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">AndelosAPP</string>
+    <string name="app_name">Andelos Restaurant</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ChooseCategory">Swap Category List and Choose Item</string>
+    <string name="NetworkError">Internet connection is required for this application!</string>
+    <string name="NetworkErrorTitle">Connection Error</string>
+    <string name="Ok">Ok</string>
 
 </resources>

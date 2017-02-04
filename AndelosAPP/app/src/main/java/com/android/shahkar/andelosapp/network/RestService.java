@@ -1,9 +1,10 @@
 package com.android.shahkar.andelosapp.network;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -15,6 +16,11 @@ public class RestService {
     public static APIService getAPIService() {
         try {
             if (retrofit == null) {
+
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .connectTimeout(10, TimeUnit.SECONDS)
+                        .readTimeout(60,TimeUnit.SECONDS).build();
+
                 retrofit = new Retrofit.Builder()
                         .addConverterFactory(GsonConverterFactory.create())
                         .baseUrl(BASE_URL)
