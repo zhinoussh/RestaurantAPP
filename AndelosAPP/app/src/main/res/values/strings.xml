@@ -7,5 +7,6 @@
     <string name="NetworkError">Internet connection is required for this application!</string>
     <string name="NetworkErrorTitle">Connection Error</string>
     <string name="Ok">Ok</string>
+    <string name="SwapText">Swap List to Choose a Category</string>
 
 </resources>

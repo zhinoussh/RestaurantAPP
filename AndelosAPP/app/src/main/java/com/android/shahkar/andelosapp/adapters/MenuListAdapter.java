@@ -2,6 +2,7 @@ package com.android.shahkar.andelosapp.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,10 +53,14 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
 
             RestaurantMenuItem MenuItem = lst_menu.get(position);
+            Typeface face = Typeface.createFromAsset(myContext.getAssets(),
+                    "fonts/Ubuntu-Medium.ttf");
+            holder.txt_MenuName.setTypeface(face);
             holder.txt_MenuName.setText(MenuItem.getMenuItemName());
 
             NumberFormat currency_format=NumberFormat.getCurrencyInstance();
             holder.txt_MenuPrice.setText(currency_format.format(MenuItem.getPrice()));
+            holder.txt_MenuPrice.setTypeface(face);
 
             Picasso.with(getContext())
                     .load(PHOTO_BASE_URL + MenuItem.getMenuItemID() + ".jpg")

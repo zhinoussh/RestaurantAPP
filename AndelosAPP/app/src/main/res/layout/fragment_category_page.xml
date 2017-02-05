@@ -19,11 +19,12 @@
             android:background="@drawable/previous" />
 
         <TextView
+            android:id="@+id/txt_swap"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".8"
             android:gravity="center_horizontal"
-            android:text="@string/ChooseCategory" />
+            android:text="@string/SwapText" />
 
         <Button
             android:id="@+id/btn_swap_right"

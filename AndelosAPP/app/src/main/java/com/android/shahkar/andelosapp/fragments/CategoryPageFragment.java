@@ -1,6 +1,7 @@
 package com.android.shahkar.andelosapp.fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
@@ -63,6 +65,11 @@ public class CategoryPageFragment extends Fragment {
                 }
             },p);
         }
+
+        TextView txt_swap=(TextView)fragmentView.findViewById(R.id.txt_swap);
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(),
+                "fonts/Ubuntu-Medium.ttf");
+        txt_swap.setTypeface(face);
         Button swapRightButton=(Button)fragmentView.findViewById(R.id.btn_swap_right);
         swapRightButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,7 +20,6 @@
         android:layout_weight=".6"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textStyle="bold"
         android:textSize="@dimen/PrimaryFontSize" />
 
         <TextView
@@ -29,7 +28,6 @@
             android:layout_weight=".4"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textStyle="bold"
             android:textSize="@dimen/PrimaryFontSize" />
     </LinearLayout>
     <ImageView

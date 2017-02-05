@@ -4,8 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bnt_swap">50dp</dimen>
     <dimen name="image">300dp</dimen>
-    <dimen name="CategoryFontSize">15pt</dimen>
-    <dimen name="PrimaryFontSize">10pt</dimen>
+    <dimen name="CategoryFontSize">12pt</dimen>
+    <dimen name="PrimaryFontSize">9pt</dimen>
     <dimen name="text_margin">16dp</dimen>
 
 </resources>
