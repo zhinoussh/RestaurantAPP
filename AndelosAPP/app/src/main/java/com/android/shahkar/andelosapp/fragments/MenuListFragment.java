@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class MenuListFragment extends ListFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_menu_list, container, false);
         try {
+            ProgressBar p= (ProgressBar) rootView.findViewById(R.id.menu_progress);
+            p.setVisibility(View.VISIBLE);
 
             APIService api = RestService.getAPIService();
             int CategoryID = getArguments().getInt("CategoryID");
@@ -47,7 +50,7 @@ public class MenuListFragment extends ListFragment {
                                 , R.layout.menu_list_item, return_list);
                         setListAdapter(da);
                     }
-                });
+                },p);
             }
         } catch (Exception ex) {
             Log.d("OnMenuFragment: ", ex.toString());

@@ -1,6 +1,7 @@
 package com.android.shahkar.andelosapp.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -46,6 +47,9 @@ public class CategoryFragment extends Fragment {
             final RestaurantCategory cat = args.getParcelable(CATEGORY_KEY);
 
             TextView txt_categoryName = (TextView) rootView.findViewById(R.id.txt_CategoryName);
+            Typeface face = Typeface.createFromAsset(getActivity().getAssets(),
+                    "fonts/Ubuntu-Medium.ttf");
+            txt_categoryName.setTypeface(face);
             txt_categoryName.setText(cat.getCategoryName());
             txt_categoryName.setOnClickListener(new View.OnClickListener() {
                 @Override

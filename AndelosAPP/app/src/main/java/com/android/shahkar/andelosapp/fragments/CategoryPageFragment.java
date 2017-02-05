@@ -1,6 +1,7 @@
 package com.android.shahkar.andelosapp.fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
@@ -44,6 +47,8 @@ public class CategoryPageFragment extends Fragment {
 
         final View fragmentView=inflater.inflate(R.layout.fragment_category_page, container, false);
 
+        ProgressBar p= (ProgressBar) fragmentView.findViewById(R.id.category_progress);
+        p.setVisibility(View.VISIBLE);
         APIService api= RestService.getAPIService();
         if(api!=null) {
             CategoryService service = new CategoryService(api.getCategoryList());
@@ -58,8 +63,13 @@ public class CategoryPageFragment extends Fragment {
                     } else
                         Toast.makeText(getActivity().getBaseContext(), "no category", Toast.LENGTH_LONG).show();
                 }
-            });
+            },p);
         }
+
+        TextView txt_swap=(TextView)fragmentView.findViewById(R.id.txt_swap);
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(),
+                "fonts/Ubuntu-Medium.ttf");
+        txt_swap.setTypeface(face);
         Button swapRightButton=(Button)fragmentView.findViewById(R.id.btn_swap_right);
         swapRightButton.setOnClickListener(new View.OnClickListener() {
             @Override

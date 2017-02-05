@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/DialogBGColor"
+        android:drawableLeft="@drawable/alert"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/NetworkErrorTitle"
+        android:textColor="@color/GrayFontColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="15dp"
+        android:textColor="@color/GrayFontColor"
+        android:textSize="16sp"
+        android:text="@string/NetworkError">
+
+    </TextView>
+
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_confirm"
+            android:clickable="true"
+            android:text="@string/Ok"
+            android:textColor="@color/GrayFontColor"
+            android:layout_gravity="center_horizontal"/>
+
+
+</LinearLayout>

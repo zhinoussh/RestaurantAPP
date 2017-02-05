@@ -17,7 +17,8 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="@dimen/CategoryFontSize"
-        android:textColor="@color/FontColor"/>
+        android:textColor="@color/OrangeFontColor"
+        android:layout_marginTop="@dimen/text_margin"/>
 
     <ImageView
         android:id="@+id/img_category"
