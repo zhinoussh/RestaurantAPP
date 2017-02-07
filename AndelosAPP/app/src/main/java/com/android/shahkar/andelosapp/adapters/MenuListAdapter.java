@@ -64,6 +64,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
             Picasso.with(getContext())
                     .load(PHOTO_BASE_URL + MenuItem.getMenuItemID() + ".jpg")
+                    .resize(200,200)
                     .into(holder.img_Menu);
         }
         catch (Exception ex)

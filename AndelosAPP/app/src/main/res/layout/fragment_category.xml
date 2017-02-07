@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/img_category"
-        android:layout_width="@dimen/image"
-        android:layout_height="@dimen/image"
+        android:layout_width="@dimen/category_image"
+        android:layout_height="@dimen/category_image"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
