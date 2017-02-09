@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3fb558</color>
     <color name="colorPrimaryDark">#309f30</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="GreenFontColor">#59ce50</color>
+    <color name="AppFontColor">#eee7d4</color>
     <color name="DialogBGColor">#edeff0</color>
     <color name="GrayFontColor">#373d42</color>
     <color name="OrangeFontColor">#e06c2e</color>

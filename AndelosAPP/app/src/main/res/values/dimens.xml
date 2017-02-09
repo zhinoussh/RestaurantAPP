@@ -3,10 +3,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bnt_swap">50dp</dimen>
+    <dimen name="height_AppBar">50dp</dimen>
     <dimen name="category_image">300dp</dimen>
     <dimen name="menu_image">200dp</dimen>
     <dimen name="CategoryFontSize">12pt</dimen>
     <dimen name="PrimaryFontSize">8pt</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="btn_padding">5dp</dimen>
+    <dimen name="AppbarFontSize">15pt</dimen>
 
 </resources>
