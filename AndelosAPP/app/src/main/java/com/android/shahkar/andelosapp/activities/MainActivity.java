@@ -1,14 +1,14 @@
 package com.android.shahkar.andelosapp.activities;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.fragments.ErrorDialogFragment;
 import com.android.shahkar.andelosapp.utils.NetworkConnectivity;
-import com.android.shahkar.andelosapp.utils.ScreenUtility;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Typeface font_AppBar=Typeface.createFromAsset(getAssets(),"fonts/LobsterTwo-Bold.ttf");
+        TextView txt_AppName=(TextView)findViewById(R.id.txt_ApppName);
+        txt_AppName.setTypeface(font_AppBar);
 
         NetworkConnectivity netStatus=new NetworkConnectivity(this);
         if(!netStatus.checkNetworkStatus())
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
     private void showConnectionErrorDialog() {
         ErrorDialogFragment dialog=new ErrorDialogFragment();
