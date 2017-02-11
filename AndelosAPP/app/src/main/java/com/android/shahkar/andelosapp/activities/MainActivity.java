@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Typeface font_AppBar=Typeface.createFromAsset(getAssets(),"fonts/LobsterTwo-Bold.ttf");
-        TextView txt_AppName=(TextView)findViewById(R.id.txt_ApppName);
+        TextView txt_AppName=(TextView)findViewById(R.id.txt_AppName);
         txt_AppName.setTypeface(font_AppBar);
 
         NetworkConnectivity netStatus=new NetworkConnectivity(this);
