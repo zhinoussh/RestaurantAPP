@@ -8,7 +8,7 @@
     <color name="GrayFontColor">#373d42</color>
     <color name="OrangeFontColor">#e06c2e</color>
     <color name="DarkOrangeColor">#685d58</color>
-
     <color name="ActiveControlFontColor">#866f64</color>
+    <color name="ErrorFontColor">#ed0b04</color>
 
 </resources>

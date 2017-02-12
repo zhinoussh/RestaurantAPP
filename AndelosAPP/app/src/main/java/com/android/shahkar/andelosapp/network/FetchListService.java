@@ -4,7 +4,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.android.shahkar.andelosapp.models.RestaurantCategory;
+import com.android.shahkar.andelosapp.utils.ResultCallBackList;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,9 +19,10 @@ public class FetchListService<T>  {
 
     public FetchListService(Call<List<T>> callAPI) {
         call=callAPI;
+        fetchList=new ArrayList<>();
     }
 
-    public List<T> FetchList(final ResultCallBack<T> resultCallback, final ProgressBar progress){
+    public List<T> FetchList(final ResultCallBackList<T> resultCallback, final ProgressBar progress){
 
         if (call != null) {
 
@@ -27,7 +30,6 @@ public class FetchListService<T>  {
                 @Override
                 public void onResponse(Call<List<T>> call, Response<List<T>> response) {
                     try {
-                        progress.setVisibility(View.INVISIBLE);
                         if (response.isSuccessful()) {
                             fetchList = response.body();
                             resultCallback.OnResultReady(fetchList);
@@ -38,6 +40,9 @@ public class FetchListService<T>  {
                     } catch (Exception ex) {
                         Log.d("OnResponse", "Err in Response: " + ex.toString());
                     }
+                    finally {
+                        progress.setVisibility(View.INVISIBLE);
+                    }
                 }
 
                 @Override
@@ -46,9 +51,6 @@ public class FetchListService<T>  {
                     Log.d("OnResponse", "Fail to Response: " + t.toString());
                 }
             });
-
-
-
         }
         return fetchList;
     }
