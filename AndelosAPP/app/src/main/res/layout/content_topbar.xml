@@ -1,44 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v7.widget.Toolbar
+<fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="@dimen/height_AppBar"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_TopBar"
+    android:name="com.android.shahkar.andelosapp.fragments.TopbarFragment"
     android:layout_width="match_parent"
-    android:background="@drawable/topbar"
-    android:elevation="7dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/btn_checkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/checkout"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/txt_AppName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/AppbarFontSize"
-            android:textColor="@color/AppFontColor"/>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:drawableRight="@drawable/login"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
-</android.support.v7.widget.Toolbar>
+    android:layout_height="wrap_content"
+    tools:layout="@layout/fragment_topbar" />
 
