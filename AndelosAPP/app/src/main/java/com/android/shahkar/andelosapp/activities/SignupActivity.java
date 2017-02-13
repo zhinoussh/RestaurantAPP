@@ -134,7 +134,8 @@ public class SignupActivity extends AppCompatActivity {
             txt_email.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 6) {
+        if (password.isEmpty() || password.length() < 6
+                || password.matches("^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]+$")) {
             txt_password.setError("at least 6 alphanumeric characters");
             valid = false;
         } else {
