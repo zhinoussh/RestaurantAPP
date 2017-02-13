@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.android.shahkar.andelosapp.utils.ParseRetrofitError;
 import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
 
 import org.json.JSONObject;
@@ -15,14 +16,12 @@ import retrofit2.Response;
 public class FetchObjectService<T> {
 
     private Call<T> call;
-    private T object;
 
     public FetchObjectService(Call<T> call) {
         this.call = call;
-        object=null;
     }
 
-    public T FetchObject(final ResultCallBackObject<T> resultCallBack, final ProgressBar progressBar)
+    public void FetchObject(final ResultCallBackObject<T> resultCallBack, final ProgressBar progressBar)
     {
         if(call!=null) {
             call.enqueue(new Callback<T>() {
@@ -30,14 +29,12 @@ public class FetchObjectService<T> {
                 public void onResponse(Call<T> call, Response<T> response) {
                   try {
                       if(response.isSuccessful()) {
-                          object = response.body();
-                          resultCallBack.OnResultReady(object,"No Error");
+                          resultCallBack.OnResultReady( response.body(),"No Error");
                       }
                       else {
-                          String error ="Error";
+                          String error ="Error in Fetch Object";
                           if (response != null && response.errorBody() != null) {
-                              JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                              error =  jsonObject.getString("error_description");
+                              error=ParseRetrofitError.getError(response.errorBody().string());
                           }
                           resultCallBack.OnResultReady(null,error);
                       }
@@ -60,7 +57,6 @@ public class FetchObjectService<T> {
                 }
             });
         }
-        return  object;
 
     }
 }

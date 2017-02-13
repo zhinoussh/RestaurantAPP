@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.android.shahkar.andelosapp.utils.ParseRetrofitError;
 import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
 
 import org.json.JSONObject;
@@ -30,15 +31,9 @@ public class PostObjectService {
                     if (response.isSuccessful()) {
                         resultCallBack.OnResultReady(null, "Success");
                     } else {
-                        String result="ERROR in Sign up";
+                        String result="ERROR in Post Object";
                         if (response != null && response.errorBody() != null) {
-                            JSONObject jsonObject = new JSONObject(response.errorBody().string());
-
-                            if(jsonObject.has("error_description"))
-                                result = jsonObject.getString("error_description");
-                            else if(jsonObject.has("Message"))
-                                result = jsonObject.getString("Message");
-
+                            result=ParseRetrofitError.getError(response.errorBody().string());
                         }
                         resultCallBack.OnResultReady(null, result);
                     }
