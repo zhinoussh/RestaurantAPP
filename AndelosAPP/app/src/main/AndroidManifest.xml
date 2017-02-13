@@ -19,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MenuActivity" />
-        <activity android:name=".activities.LoginActivity" android:theme="@style/AppTheme.Login"></activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/AppTheme.Login" />
+        <activity
+            android:name=".activities.SignupActivity"
+            android:theme="@style/AppTheme.Login"></activity>
     </application>
 
 </manifest>

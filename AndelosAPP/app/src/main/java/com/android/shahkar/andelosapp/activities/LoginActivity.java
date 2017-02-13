@@ -109,10 +109,11 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setEnabled(true);
         SharedPreferences.Editor pref_editor = getSharedPreferences(
                 getResources().getString(R.string.app_name), MODE_PRIVATE).edit();
-        pref_editor.putString(token.getUserName(), token.getAccessToken());
-        //finish();
-        txt_error.setText( token.getAccessToken());
-
+        pref_editor.putString("username",token.getUserName());
+        pref_editor.putString("token", token.getAccessToken());
+        pref_editor.putString("firstname", token.getfirstName());
+        pref_editor.apply();
+        finish();
     }
 
     public void onLoginFailed() {

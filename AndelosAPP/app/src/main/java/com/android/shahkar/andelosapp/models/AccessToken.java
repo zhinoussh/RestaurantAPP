@@ -8,6 +8,7 @@ public class AccessToken {
     private String access_token;
     private String token_type;
     private String userName;
+    private String firstName;
     private String expires_in;
 
     public String getAccessToken() {
@@ -15,6 +16,8 @@ public class AccessToken {
     }
 
     public String getUserName() { return userName; }
+
+    public String getfirstName() { return firstName; }
 
     public String getExpirationTime() {
         return expires_in;
