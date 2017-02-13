@@ -25,6 +25,12 @@
             android:textSize="@dimen/LogoFontSize"
             android:textColor="@color/OrangeFontColor"/>
 
+        <ProgressBar
+            android:id="@+id/signup_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
         <!--  Name Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -105,12 +111,7 @@
             android:textSize="16dip"
             android:textColor="@color/DarkOrangeColor"/>
 
-        <ProgressBar
-            android:id="@+id/signup_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="invisible"/>
+
 
     </LinearLayout>
 </ScrollView>

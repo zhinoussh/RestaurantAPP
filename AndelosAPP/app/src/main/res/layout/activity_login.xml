@@ -24,6 +24,12 @@
             android:textSize="@dimen/LogoFontSize"
             android:textColor="@color/OrangeFontColor"/>
 
+    <ProgressBar
+        android:id="@+id/login_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -77,12 +83,7 @@
             android:textSize="18dip"
             android:textColor="@color/DarkOrangeColor"/>
 
-    <ProgressBar
-        android:id="@+id/login_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"/>
+
 
     </LinearLayout>
 </ScrollView>
