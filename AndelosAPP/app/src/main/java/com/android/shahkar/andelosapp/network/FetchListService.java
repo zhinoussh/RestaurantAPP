@@ -15,14 +15,12 @@ import retrofit2.Response;
 public class FetchListService<T>  {
 
      private Call<List<T>> call;
-    private List<T> fetchList;
 
     public FetchListService(Call<List<T>> callAPI) {
         call=callAPI;
-        fetchList=new ArrayList<>();
     }
 
-    public List<T> FetchList(final ResultCallBackList<T> resultCallback, final ProgressBar progress){
+    public void FetchList(final ResultCallBackList<T> resultCallback, final ProgressBar progress){
 
         if (call != null) {
 
@@ -31,8 +29,7 @@ public class FetchListService<T>  {
                 public void onResponse(Call<List<T>> call, Response<List<T>> response) {
                     try {
                         if (response.isSuccessful()) {
-                            fetchList = response.body();
-                            resultCallback.OnResultReady(fetchList);
+                            resultCallback.OnResultReady( response.body());
                         }
                         else
                             Log.d("OnResponse", "Fail to  get List with error: " + response.message());
@@ -52,6 +49,5 @@ public class FetchListService<T>  {
                 }
             });
         }
-        return fetchList;
     }
 }
