@@ -3,10 +3,14 @@ package com.android.shahkar.andelosapp.network;
 import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
+import com.android.shahkar.andelosapp.models.User;
 
 import java.util.List;
 
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -27,4 +31,7 @@ public interface APIService {
             @Field("username") String userName
             , @Field("password") String pssword
             , @Field("grant_type") String grant_type);
+
+    @POST("Account/Register")
+    public Call<ResponseBody> Register(@Body User user);
 }
