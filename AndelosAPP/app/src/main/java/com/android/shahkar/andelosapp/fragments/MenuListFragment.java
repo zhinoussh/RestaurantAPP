@@ -2,21 +2,18 @@ package com.android.shahkar.andelosapp.fragments;
 
 
 import android.app.ListFragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.MenuListAdapter;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
 import com.android.shahkar.andelosapp.network.APIService;
-import com.android.shahkar.andelosapp.network.RestService;
+import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.network.MenuService;
 import com.android.shahkar.andelosapp.utils.ResultCallBackList;
 
@@ -38,7 +35,7 @@ public class MenuListFragment extends ListFragment {
             ProgressBar p= (ProgressBar) rootView.findViewById(R.id.menu_progress);
             p.setVisibility(View.VISIBLE);
 
-            APIService api = RestService.getAPIService();
+            APIService api = ServiceGenerator.createService();
             int CategoryID = getArguments().getInt("CategoryID");
             if (api != null && CategoryID > 0) {
 

@@ -18,10 +18,11 @@ import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
+import com.android.shahkar.andelosapp.activities.UserActivity;
+import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 
 public class TopbarFragment extends Fragment {
 
-    private static  final int LOGIN_REQUEST=2;
 
     public TopbarFragment() {
         // Required empty public constructor
@@ -41,19 +42,26 @@ public class TopbarFragment extends Fragment {
         Typeface font_welcome=Typeface.DEFAULT.createFromAsset(getActivity().getAssets(),"fonts/Ubuntu-Medium.ttf");
         TextView txt_welcome=(TextView)rootView.findViewById(R.id.txt_welcome);
         txt_welcome.setTypeface(font_welcome);
+        txt_welcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent UserIntent=new Intent(getContext(), UserActivity.class);
+                startActivityForResult(UserIntent, ApplicationConstant.USER_REQUEST);
+            }
+        });
 
         Button btn_login=(Button)rootView.findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent loginIntent=new Intent(getContext(), LoginActivity.class);
-                startActivityForResult(loginIntent,LOGIN_REQUEST);
+                startActivityForResult(loginIntent, ApplicationConstant.LOGIN_REQUEST);
             }
         });
 
         SharedPreferences prefs=getActivity().getSharedPreferences(
                 getResources().getString(R.string.app_name), getActivity().MODE_PRIVATE);
-        String firstName= prefs.getString("firstname","");
+        String firstName= prefs.getString(ApplicationConstant.FIRSTNAME_PREF_KEY,"");
         if(TextUtils.isEmpty(firstName)) {
             btn_login.setVisibility(View.VISIBLE);
             txt_welcome.setVisibility(View.INVISIBLE);
@@ -71,11 +79,18 @@ public class TopbarFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(requestCode==LOGIN_REQUEST)
+        if(requestCode==ApplicationConstant.LOGIN_REQUEST)
         {
             if(resultCode==getActivity().RESULT_OK)
             {
                 Toast.makeText(getContext(),"Login succeed",Toast.LENGTH_LONG).show();
+            }
+        }
+        else if(requestCode==ApplicationConstant.USER_REQUEST)
+        {
+            if(resultCode==getActivity().RESULT_OK)
+            {
+                Toast.makeText(getContext(),"Logout succeed",Toast.LENGTH_LONG).show();
             }
 
         }

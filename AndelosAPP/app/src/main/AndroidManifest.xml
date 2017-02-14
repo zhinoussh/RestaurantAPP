@@ -22,11 +22,14 @@
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.Login"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.SignupActivity"
             android:theme="@style/AppTheme.Login"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".activities.UserActivity"
+            android:theme="@style/AppTheme.Login"></activity>
     </application>
 
 </manifest>

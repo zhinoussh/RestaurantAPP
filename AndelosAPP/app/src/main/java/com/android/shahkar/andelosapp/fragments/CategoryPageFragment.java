@@ -19,7 +19,7 @@ import com.android.shahkar.andelosapp.adapters.CategoryPagerAdapter;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.CategoryService;
-import com.android.shahkar.andelosapp.network.RestService;
+import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.utils.ResultCallBackList;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class CategoryPageFragment extends Fragment {
 
         ProgressBar p= (ProgressBar) fragmentView.findViewById(R.id.category_progress);
         p.setVisibility(View.VISIBLE);
-        APIService api= RestService.getAPIService();
+        APIService api= ServiceGenerator.createService();
         if(api!=null) {
             CategoryService service = new CategoryService(api.getCategoryList());
             service.FetchList(new ResultCallBackList<RestaurantCategory>() {

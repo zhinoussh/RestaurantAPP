@@ -13,7 +13,8 @@ import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.LoginService;
-import com.android.shahkar.andelosapp.network.RestService;
+import com.android.shahkar.andelosapp.network.ServiceGenerator;
+import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
 import retrofit2.Call;
 
@@ -21,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView txt_username, txt_password, txt_error;
     Button btn_login;
-    private static final int SIGNUP_REQUEST=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent signupIntent=new Intent(getApplicationContext(),SignupActivity.class);
-                startActivityForResult(signupIntent,SIGNUP_REQUEST);
+                startActivityForResult(signupIntent,ApplicationConstant.SIGNUP_REQUEST);
             }
         });
     }
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.login_progress);
         progressBar.setVisibility(View.VISIBLE);
 
-        APIService api = RestService.getAPIService();
+        APIService api = ServiceGenerator.createService();
         if (api != null) {
             Call<AccessToken> call_accessToken = api.getAccessToken(username, password, "password");
             LoginService login_service = new LoginService(call_accessToken);
@@ -114,9 +114,9 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences.Editor pref_editor = getSharedPreferences(
                 getResources().getString(R.string.app_name), MODE_PRIVATE).edit();
-        pref_editor.putString("username",token.getUserName());
-        pref_editor.putString("token", token.getAccessToken());
-        pref_editor.putString("firstname", token.getfirstName());
+        pref_editor.putString(ApplicationConstant.USERNAME_PREF_KEY,token.getUserName());
+        pref_editor.putString(ApplicationConstant.TOKEN_PREF_KEY, token.getAccessToken());
+        pref_editor.putString(ApplicationConstant.FIRSTNAME_PREF_KEY, token.getfirstName());
         pref_editor.apply();
         setResult(RESULT_OK,getIntent());
         finish();
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(requestCode==SIGNUP_REQUEST)
+        if(requestCode== ApplicationConstant.SIGNUP_REQUEST)
         {
             //log user in automatically
             if(resultCode==RESULT_OK) {

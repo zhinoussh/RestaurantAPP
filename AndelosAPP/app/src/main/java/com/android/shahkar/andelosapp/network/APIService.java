@@ -34,4 +34,7 @@ public interface APIService {
 
     @POST("Account/Register")
     public Call<AccessToken> RegisterUser(@Body User user);
+
+    @POST("Account/Logout")
+    public Call<ResponseBody> LogoutUser();
 }

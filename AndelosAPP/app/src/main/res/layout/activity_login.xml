@@ -64,7 +64,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"
+            android:text="@string/Login"
             android:background="@drawable/btn_login"/>
     <TextView android:id="@+id/txt_error_login"
         android:layout_width="fill_parent"

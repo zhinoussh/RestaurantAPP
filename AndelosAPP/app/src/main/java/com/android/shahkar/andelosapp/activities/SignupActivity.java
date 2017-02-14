@@ -12,10 +12,9 @@ import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.models.User;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.RegisterService;
-import com.android.shahkar.andelosapp.network.RestService;
+import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 
 public class SignupActivity extends AppCompatActivity {
@@ -66,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.signup_progress);
         progressBar.setVisibility(View.VISIBLE);
 
-        APIService api= RestService.getAPIService();
+        APIService api= ServiceGenerator.createService();
         if(api!=null)
         {
             String email = txt_email.getText().toString();
