@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.models.User;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.RegisterService;
@@ -74,14 +75,15 @@ public class SignupActivity extends AppCompatActivity {
             String lastName = txt_lastname.getText().toString();
 
             User user=new User(firstName,lastName,email,password);
-            Call<ResponseBody> call_register=api.Register(user);
+            Call<AccessToken> call_register=api.RegisterUser(user);
             RegisterService registerService=new RegisterService(call_register);
-            registerService.PostObject(new ResultCallBackObject() {
+            registerService.FetchObject(new ResultCallBackObject() {
                 @Override
                 public void OnResultReady(Object return_object, String message) {
                     if(message=="Success")
                     {
-                        setResult(RESULT_OK);
+                        getIntent().putExtra("token",(AccessToken)return_object);
+                        setResult(RESULT_OK,getIntent());
                         finish();
                     }
                     else {

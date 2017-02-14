@@ -1,14 +1,12 @@
 package com.android.shahkar.andelosapp.network;
 
-import okhttp3.ResponseBody;
+import com.android.shahkar.andelosapp.models.AccessToken;
+
 import retrofit2.Call;
 
-/**
- * Created by User on 2/13/2017.
- */
-public class RegisterService extends PostObjectService {
+public class RegisterService extends FetchObjectService<AccessToken> {
 
-    public RegisterService(Call<ResponseBody> call) {
+    public RegisterService(Call<AccessToken> call) {
         super(call);
     }
 

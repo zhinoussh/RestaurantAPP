@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView txt_username, txt_password, txt_error;
     Button btn_login;
-    private static  final int SIGNUP_REQUEST=1;
+    private static final int SIGNUP_REQUEST=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         pref_editor.putString("token", token.getAccessToken());
         pref_editor.putString("firstname", token.getfirstName());
         pref_editor.apply();
+        setResult(RESULT_OK,getIntent());
         finish();
     }
 
@@ -131,9 +132,14 @@ public class LoginActivity extends AppCompatActivity {
 
         if(requestCode==SIGNUP_REQUEST)
         {
-            //log user in automaticaly
-            if(resultCode==RESULT_OK)
-                finish();
+            //log user in automatically
+            if(resultCode==RESULT_OK) {
+
+                AccessToken token = data.getParcelableExtra("token");
+                if (token != null) {
+                    onLoginSuccess(token);
+                }
+            }
         }
     }
 }

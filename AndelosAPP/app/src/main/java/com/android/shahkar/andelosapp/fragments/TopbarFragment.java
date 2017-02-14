@@ -14,16 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
 
 public class TopbarFragment extends Fragment {
 
+    private static  final int LOGIN_REQUEST=2;
 
     public TopbarFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -44,7 +47,7 @@ public class TopbarFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent loginIntent=new Intent(getContext(), LoginActivity.class);
-                getContext().startActivity(loginIntent);
+                startActivityForResult(loginIntent,LOGIN_REQUEST);
             }
         });
 
@@ -62,12 +65,20 @@ public class TopbarFragment extends Fragment {
             txt_welcome.setText("Hi "+firstName+"!");
         }
 
-
-
-
-
-
         return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==LOGIN_REQUEST)
+        {
+            if(resultCode==getActivity().RESULT_OK)
+            {
+                Toast.makeText(getContext(),"Login succeed",Toast.LENGTH_LONG).show();
+            }
+
+        }
     }
 
 }

@@ -29,7 +29,7 @@ public class FetchObjectService<T> {
                 public void onResponse(Call<T> call, Response<T> response) {
                   try {
                       if(response.isSuccessful()) {
-                          resultCallBack.OnResultReady( response.body(),"No Error");
+                          resultCallBack.OnResultReady( response.body(),"Success");
                       }
                       else {
                           String error ="Error in Fetch Object";

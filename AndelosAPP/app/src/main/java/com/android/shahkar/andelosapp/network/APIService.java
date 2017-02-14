@@ -33,5 +33,5 @@ public interface APIService {
             , @Field("grant_type") String grant_type);
 
     @POST("Account/Register")
-    public Call<ResponseBody> Register(@Body User user);
+    public Call<AccessToken> RegisterUser(@Body User user);
 }

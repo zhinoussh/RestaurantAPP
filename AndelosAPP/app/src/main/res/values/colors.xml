@@ -10,6 +10,6 @@
     <color name="DarkOrangeColor">#685d58</color>
     <color name="ActiveControlFontColor">#866f64</color>
     <color name="ErrorFontColor">#ed0b04</color>
-    <color name="UserFontColor">#035db7</color>
+    <color name="UserFontColor">#dfd8c2</color>
 
 </resources>
