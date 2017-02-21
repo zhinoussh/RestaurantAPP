@@ -9,33 +9,24 @@ import android.os.Parcelable;
 public class AccessToken implements Parcelable {
 
     private String access_token;
-    private String token_type;
     private String userName;
     private String firstName;
-    private String expires_in;
+    private int expires_in;
 
     public String getAccessToken() {
         return access_token;
     }
 
-    public String getUserName() { return userName; }
-
-    public String getfirstName() { return firstName; }
-
-    public String getExpirationTime() {
-        return expires_in;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getTokenType() {
-        // OAuth requires uppercase Authorization HTTP header value for token type
-        if (! Character.isUpperCase(token_type.charAt(0))) {
-            token_type =
-                    Character
-                            .toString(token_type.charAt(0))
-                            .toUpperCase() + token_type.substring(1);
-        }
+    public String getfirstName() {
+        return firstName;
+    }
 
-        return token_type;
+    public int getExpirationTime() {
+        return expires_in;
     }
 
     @Override
@@ -46,10 +37,9 @@ public class AccessToken implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.access_token);
-        dest.writeString(this.token_type);
         dest.writeString(this.userName);
         dest.writeString(this.firstName);
-        dest.writeString(this.expires_in);
+        dest.writeInt(this.expires_in);
     }
 
     public AccessToken() {
@@ -57,10 +47,9 @@ public class AccessToken implements Parcelable {
 
     protected AccessToken(Parcel in) {
         this.access_token = in.readString();
-        this.token_type = in.readString();
         this.userName = in.readString();
         this.firstName = in.readString();
-        this.expires_in = in.readString();
+        this.expires_in = in.readInt();
     }
 
     public static final Parcelable.Creator<AccessToken> CREATOR = new Parcelable.Creator<AccessToken>() {

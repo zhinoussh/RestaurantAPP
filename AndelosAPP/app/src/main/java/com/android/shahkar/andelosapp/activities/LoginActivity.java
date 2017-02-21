@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.network.APIService;
@@ -16,6 +18,9 @@ import com.android.shahkar.andelosapp.network.LoginService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
+
+import java.util.Calendar;
+
 import retrofit2.Call;
 
 public class LoginActivity extends AppCompatActivity {
@@ -112,11 +117,19 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess(AccessToken token) {
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.SECOND, token.getExpirationTime());
+
+
+        long expire_millis = calendar.getTimeInMillis();
+
         SharedPreferences.Editor pref_editor = getSharedPreferences(
                 getResources().getString(R.string.app_name), MODE_PRIVATE).edit();
         pref_editor.putString(ApplicationConstant.USERNAME_PREF_KEY,token.getUserName());
         pref_editor.putString(ApplicationConstant.TOKEN_PREF_KEY, token.getAccessToken());
         pref_editor.putString(ApplicationConstant.FIRSTNAME_PREF_KEY, token.getfirstName());
+        pref_editor.putLong(ApplicationConstant.EXPIRE_PREF_KEY, expire_millis);
+
         pref_editor.apply();
         setResult(RESULT_OK,getIntent());
         finish();
