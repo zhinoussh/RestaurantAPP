@@ -1,12 +1,18 @@
 package com.android.shahkar.andelosapp.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
-/**
- * Created by User on 2/4/2017.
- */
+import com.android.shahkar.andelosapp.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class NetworkConnectivity {
 
     private Context activityContext;
@@ -24,5 +30,28 @@ public class NetworkConnectivity {
             return true;
         else
             return false;
+    }
+
+    public Boolean isLoggedIn(){
+
+        Boolean loggedIn=true;
+
+        SharedPreferences prefs = activityContext.getSharedPreferences(
+                activityContext.getResources().getString(R.string.app_name), activityContext.MODE_PRIVATE);
+        String token = prefs.getString(ApplicationConstant.TOKEN_PREF_KEY, "");
+        long expire_in_millis = prefs.getLong(ApplicationConstant.EXPIRE_PREF_KEY, 0);
+
+        //calculate expiration time for auth token
+        Calendar dt_expire = new GregorianCalendar();
+        dt_expire.setTimeInMillis(expire_in_millis);
+        Long dt_now = System.currentTimeMillis();
+
+        SimpleDateFormat formatter=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+        String expire_time=formatter.format(dt_expire.getTime());
+        if(token=="" || expire_in_millis==0 || expire_in_millis <= dt_now)
+            loggedIn=false;
+
+
+        return loggedIn;
     }
 }
