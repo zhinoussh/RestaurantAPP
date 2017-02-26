@@ -12,6 +12,7 @@
     <string name="Checkout">Checkout</string>
     <string name="Logout">Logout</string>
     <string name="Register">Create Account</string>
+    <string name="Order">Order</string>
 
 
 </resources>

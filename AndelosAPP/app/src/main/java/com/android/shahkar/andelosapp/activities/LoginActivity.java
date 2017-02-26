@@ -120,7 +120,6 @@ public class LoginActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.SECOND, token.getExpirationTime());
 
-
         long expire_millis = calendar.getTimeInMillis();
 
         SharedPreferences.Editor pref_editor = getSharedPreferences(

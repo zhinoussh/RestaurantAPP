@@ -42,22 +42,22 @@ public class UserActivity extends AppCompatActivity {
 
         final SharedPreferences pref = getSharedPreferences(getResources().getString(R.string.app_name), MODE_PRIVATE);
 
-        //String authToken = pref.getString(ApplicationConstant.TOKEN_PREF_KEY, null);
-//        APIService api = ServiceGenerator.createService(authToken);
-//        Call<ResponseBody> call_logout = api.LogoutUser();
-//        LogoutService service = new LogoutService(call_logout);
-//        service.PostObject(new ResultCallBackObject() {
-//            @Override
-//            public void OnResultReady(Object return_object, String message) {
-//                if (message == "Success") {
+        String authToken = pref.getString(ApplicationConstant.TOKEN_PREF_KEY, null);
+        APIService api = ServiceGenerator.createService(authToken);
+        Call<ResponseBody> call_logout = api.LogoutUser();
+        LogoutService service = new LogoutService(call_logout);
+        service.PostObject(new ResultCallBackObject() {
+            @Override
+            public void OnResultReady(Object return_object, String message) {
+                if (message == "Success") {
                     pref.edit().clear().commit();
-//                    setResult(RESULT_OK, getIntent());
-//                    finish();
-//                } else
-//                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-//
-//            }
-//        }, progress);
+                    setResult(RESULT_OK, getIntent());
+                    finish();
+                } else
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
+            }
+        }, progress);
 
     }
 }
