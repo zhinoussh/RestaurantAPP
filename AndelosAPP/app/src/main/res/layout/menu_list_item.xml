@@ -15,6 +15,7 @@
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
+        android:id="@+id/lyt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -36,4 +37,30 @@
             android:gravity="center"
             android:textSize="@dimen/PrimaryFontSize" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_below="@+id/lyt_name">
+
+        <NumberPicker
+            android:id="@+id/txt_orderNum"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_orderButton"
+            android:layout_alignParentLeft="true"
+            ></NumberPicker>
+        <Button
+            android:id="@+id/btn_order"
+            android:layout_width="@dimen/width_orderButton"
+            android:layout_height="@dimen/height_orderButton"
+            android:background="@drawable/btn_logout"
+            android:text="@string/Order"
+            android:textColor="@color/DialogBGColor"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 </RelativeLayout>

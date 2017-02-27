@@ -12,13 +12,11 @@
         <item name="colorPrimary">@color/DialogBGColor</item>
         <item name="colorPrimaryDark">@color/DarkOrangeColor</item>
         <item name="colorAccent">@color/DialogBGColor</item>
-
-        <!--<item name="android:windowBackground">@color/primary</item>-->
-
         <item name="colorControlNormal">@color/OrangeFontColor</item>
         <item name="colorControlActivated">@color/ActiveControlFontColor</item>
         <item name="android:textColorHint">@color/OrangeFontColor</item>
         <item name="colorButtonNormal">@color/OrangeFontColor</item>
+
     </style>
 
 </resources>

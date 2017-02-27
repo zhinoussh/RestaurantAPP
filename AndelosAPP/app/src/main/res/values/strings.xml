@@ -10,6 +10,9 @@
     <string name="SwapText">Swap List to Choose a Category</string>
     <string name="Login">Login</string>
     <string name="Checkout">Checkout</string>
+    <string name="Logout">Logout</string>
+    <string name="Register">Create Account</string>
+    <string name="Order">Order</string>
 
 
 </resources>

@@ -1,11 +1,8 @@
 package com.android.shahkar.andelosapp.activities;
 
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.fragments.ErrorDialogFragment;
 import com.android.shahkar.andelosapp.utils.NetworkConnectivity;
@@ -14,6 +11,7 @@ import com.android.shahkar.andelosapp.utils.NetworkConnectivity;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean isWideScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

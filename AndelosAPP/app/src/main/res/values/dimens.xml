@@ -12,5 +12,9 @@
     <dimen name="btn_padding">5dp</dimen>
     <dimen name="AppbarFontSize">15pt</dimen>
     <dimen name="LogoFontSize">20pt</dimen>
+    <dimen name="welcomeString">100dp</dimen>
+    <dimen name="height_orderButton">50dp</dimen>
+    <dimen name="width_orderButton">100dp</dimen>
+
 
 </resources>

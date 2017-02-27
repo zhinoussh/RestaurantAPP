@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_weight=".8"
             android:gravity="center_horizontal"
-            android:text="@string/SwapText" />
+            android:text="@string/SwapText"
+            android:textSize="@dimen/PrimaryFontSize"/>
 
         <Button
             android:id="@+id/btn_swap_right"
