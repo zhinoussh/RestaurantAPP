@@ -8,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.database.DataBaseHelper;
+import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +40,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
         try {
             if (convertView == null) {
                 LayoutInflater inflater = ((Activity) myContext).getLayoutInflater();
@@ -46,13 +50,15 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
                 holder.txt_MenuName = (TextView) convertView.findViewById(R.id.txt_SubCategoryName);
                 holder.txt_MenuPrice = (TextView) convertView.findViewById(R.id.txt_SubCategoryPrice);
                 holder.img_Menu = (ImageView) convertView.findViewById(R.id.img_subcategory);
+                holder.btn_order = (Button) convertView.findViewById(R.id.btn_order);
+                holder.txt_orderNum = (TextView) convertView.findViewById(R.id.txt_orderNum);
 
                 convertView.setTag(holder);
             } else
                 holder = (ViewHolder) convertView.getTag();
 
 
-            RestaurantMenuItem MenuItem = lst_menu.get(position);
+            final RestaurantMenuItem MenuItem = lst_menu.get(position);
             Typeface face = Typeface.createFromAsset(myContext.getAssets(),
                     "fonts/Ubuntu-Medium.ttf");
             holder.txt_MenuName.setTypeface(face);
@@ -66,6 +72,17 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
                     .load(PHOTO_BASE_URL + MenuItem.getMenuItemID() + ".jpg")
                     .resize(200,200)
                     .into(holder.img_Menu);
+
+            holder.btn_order.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DataBaseHandler dbHandler=new DataBaseHandler(myContext);
+                    int orderNum=Integer.parseInt(holder.txt_orderNum.getText().toString());
+                    Order newOrder=new Order(MenuItem.getMenuItemID()
+                            ,MenuItem.getMenuItemName(),orderNum,MenuItem.getPrice());
+                    dbHandler.insertOrder(newOrder);
+                }
+            });
         }
         catch (Exception ex)
         {
@@ -80,6 +97,8 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
         TextView txt_MenuPrice;
         TextView txt_MenuName;
         ImageView img_Menu;
+        Button btn_order;
+        TextView txt_orderNum;
     }
 
 }

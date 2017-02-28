@@ -3,27 +3,20 @@ package com.android.shahkar.andelosapp.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.AvoidXfermode;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
 import com.android.shahkar.andelosapp.activities.UserActivity;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
-import com.android.shahkar.andelosapp.utils.NetworkConnectivity;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import com.android.shahkar.andelosapp.network.NetworkConnectivity;
 
 public class TopbarFragment extends Fragment {
 
@@ -51,6 +44,15 @@ public class TopbarFragment extends Fragment {
             public void onClick(View v) {
                 Intent UserIntent = new Intent(getContext(), UserActivity.class);
                 startActivityForResult(UserIntent, ApplicationConstant.USER_REQUEST);
+            }
+        });
+
+        btn_login = (Button) rootView.findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
+                startActivityForResult(loginIntent, ApplicationConstant.LOGIN_REQUEST);
             }
         });
 

@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.models.AccessToken;
@@ -17,7 +16,7 @@ import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.LoginService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
-import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
+import com.android.shahkar.andelosapp.network.ResultCallBackObject;
 
 import java.util.Calendar;
 

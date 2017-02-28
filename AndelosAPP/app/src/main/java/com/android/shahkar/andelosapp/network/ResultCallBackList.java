@@ -1,4 +1,4 @@
-package com.android.shahkar.andelosapp.utils;
+package com.android.shahkar.andelosapp.network;
 
 import java.util.List;
 
