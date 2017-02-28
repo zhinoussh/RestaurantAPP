@@ -1,28 +1,42 @@
 package com.android.shahkar.andelosapp.database;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.android.shahkar.andelosapp.models.Order;
 
 /**
  * Created by User on 2/28/2017.
  */
 public class DataBaseHandler {
 
-    SQLiteOpenHelper dbhelper;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
+    SQLiteOpenHelper mDbHelper;
 
-    public DataBaseHandler(DataBaseHelper dbHelper)
+    public DataBaseHandler(Context context)
     {
-        dbhelper=dbHelper;
+        mContext=context;
+        mDbHelper=DataBaseHelper.getInstance(mContext);
     }
 
-    public SQLiteDatabase openDB()
-    {
-        return dbhelper.getWritableDatabase();
+    private void openDB() {
+        mDatabase = mDbHelper.getWritableDatabase();
     }
 
-    public void closeDB()
+    private void closeDB()
     {
-        dbhelper.close();
+        mDbHelper.close();
+    }
+
+    public void insertOrder(Order o)
+    {
+        openDB();
+        ContentValues orderValues=o.toValues();
+        mDatabase.insert("OrderTable",null,orderValues);
+        closeDB();
     }
 
 }

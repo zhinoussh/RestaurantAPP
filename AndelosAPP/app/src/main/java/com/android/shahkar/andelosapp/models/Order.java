@@ -1,6 +1,8 @@
 package com.android.shahkar.andelosapp.models;
 
 
+import android.content.ContentValues;
+
 public class Order {
 
     private int OrderId;
@@ -8,6 +10,13 @@ public class Order {
     private String MenuItemName;
     private int MenuItemCount;
     private double price;
+
+    public Order(int menuItemId, String menuItemName, int menuItemCount, double price) {
+       MenuItemId = menuItemId;
+        MenuItemName = menuItemName;
+        MenuItemCount = menuItemCount;
+        this.price = price;
+    }
 
     public int getOrderId() {
         return OrderId;
@@ -47,5 +56,16 @@ public class Order {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public ContentValues toValues(){
+        ContentValues values=new ContentValues(5);
+
+        values.put("MenuItemId",MenuItemId);
+        values.put("MenuItemName",MenuItemName);
+        values.put("MenuItemCount",MenuItemCount);
+        values.put("price",price);
+
+        return  values;
     }
 }

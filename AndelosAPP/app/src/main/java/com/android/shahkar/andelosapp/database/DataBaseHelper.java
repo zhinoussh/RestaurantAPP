@@ -5,6 +5,7 @@ import android.database.sqlite.*;
 import java.io.*;
 import java.sql.SQLException;
 import android.content.Context;
+import android.widget.Toast;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
 
@@ -25,7 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return mInstance;
     }
 
-    private DataBaseHelper(Context context) {
+    public DataBaseHelper(Context context) {
         super(context, DB_NAME, null,DB_VERSION);
         this.myContext = context;
     }
@@ -69,9 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
 
         if(checkDB != null){
-
             checkDB.close();
-
         }
 
         return checkDB != null ? true : false;
@@ -112,7 +111,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         //Open the database
         String myPath = DB_PATH + DB_NAME;
         myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
     }
 
     @Override
@@ -127,12 +125,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Toast.makeText(myContext,"onCreate Database",Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        Toast.makeText(myContext,"onUpgrade Database version:"+ oldVersion,Toast.LENGTH_LONG).show();
     }
 
     // Add your public helper methods to access and get content from the database.
