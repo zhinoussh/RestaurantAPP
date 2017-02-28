@@ -56,6 +56,15 @@ public class TopbarFragment extends Fragment {
             }
         });
 
+        btn_login = (Button) rootView.findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
+                startActivityForResult(loginIntent, ApplicationConstant.LOGIN_REQUEST);
+            }
+        });
+
         setLoginStatus();
 
         return rootView;
