@@ -4,11 +4,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.android.shahkar.andelosapp.utils.ParseRetrofitError;
-import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
-
-import org.json.JSONObject;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

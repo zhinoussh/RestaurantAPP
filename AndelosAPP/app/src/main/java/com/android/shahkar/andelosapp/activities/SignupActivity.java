@@ -13,7 +13,7 @@ import com.android.shahkar.andelosapp.models.User;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.RegisterService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
-import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
+import com.android.shahkar.andelosapp.network.ResultCallBackObject;
 
 import retrofit2.Call;
 

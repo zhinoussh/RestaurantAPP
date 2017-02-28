@@ -15,7 +15,7 @@ import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.network.MenuService;
-import com.android.shahkar.andelosapp.utils.ResultCallBackList;
+import com.android.shahkar.andelosapp.network.ResultCallBackList;
 
 import java.util.List;
 

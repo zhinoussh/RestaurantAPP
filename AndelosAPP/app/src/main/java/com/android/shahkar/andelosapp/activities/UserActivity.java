@@ -13,7 +13,7 @@ import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.LogoutService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
-import com.android.shahkar.andelosapp.utils.ResultCallBackObject;
+import com.android.shahkar.andelosapp.network.ResultCallBackObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

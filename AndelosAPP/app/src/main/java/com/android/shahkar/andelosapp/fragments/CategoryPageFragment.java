@@ -20,7 +20,7 @@ import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.CategoryService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
-import com.android.shahkar.andelosapp.utils.ResultCallBackList;
+import com.android.shahkar.andelosapp.network.ResultCallBackList;
 
 import java.util.List;
 

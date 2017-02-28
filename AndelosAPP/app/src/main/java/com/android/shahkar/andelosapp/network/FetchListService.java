@@ -4,9 +4,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.android.shahkar.andelosapp.utils.ResultCallBackList;
-
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package com.android.shahkar.andelosapp.utils;
+package com.android.shahkar.andelosapp.network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
