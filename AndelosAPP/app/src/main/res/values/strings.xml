@@ -13,6 +13,10 @@
     <string name="Logout">Logout</string>
     <string name="Register">Create Account</string>
     <string name="Order">Order</string>
+    <string name="rowNumber">#</string>
+    <string name="OrderTitle">Title</string>
+    <string name="Num">Number</string>
+    <string name="price">Price</string>
 
 
 </resources>

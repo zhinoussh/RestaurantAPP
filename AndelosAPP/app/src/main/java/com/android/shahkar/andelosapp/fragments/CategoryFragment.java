@@ -17,9 +17,6 @@ import com.android.shahkar.andelosapp.activities.*;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.squareup.picasso.Picasso;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CategoryFragment extends Fragment {
 
     private  static final String CATEGORY_KEY="Category_Key";

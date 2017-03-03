@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.android.shahkar.andelosapp.activities.CheckoutActivity">
+    tools:context="com.android.shahkar.andelosapp.activities.CheckoutActivity"
+    android:orientation="vertical"
+    android:background="@drawable/backrepeat">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/content_topbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+        <TextView
+            android:id="@+id/txt_title_rowNumber"
+            android:layout_width="0dp"
+            android:layout_weight=".1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/PrimaryFontSize"
+            android:text="@string/rowNumber"/>
+
+        <TextView
+            android:id="@+id/txt_title_orderName"
+            android:layout_width="0dp"
+            android:layout_weight=".5"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/PrimaryFontSize"
+            android:text="@string/OrderTitle"/>
+        <TextView
+            android:id="@+id/txt_title_orderNumber"
+            android:layout_width="0dp"
+            android:layout_weight=".2"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/PrimaryFontSize"
+            android:text="@string/Num"/>
+
+        <TextView
+            android:id="@+id/txt_title_orderPrice"
+            android:layout_width="0dp"
+            android:layout_weight=".2"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/PrimaryFontSize"
+            android:text="@string/price"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_orders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         app:layoutManager="LinearLayoutManager">
     </android.support.v7.widget.RecyclerView>
-</RelativeLayout>
+</LinearLayout>

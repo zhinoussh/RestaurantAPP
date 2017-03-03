@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.models.Order;
@@ -43,9 +44,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.txt_OrderPrice.setTypeface(face);
 
         Order orderItem=mOrders.get(position);
-        holder.txt_RowNumber.setText((position+1)+"");
+        holder.txt_RowNumber.setText(String.valueOf(position+1));
         holder.txt_OrderName.setText(orderItem.getMenuItemName());
-        holder.txt_OrderNumber.setText(orderItem.getMenuItemCount());
+        holder.txt_OrderNumber.setText(String.valueOf(orderItem.getMenuItemCount()));
         holder.txt_OrderPrice.setText("$ "+orderItem.getPrice());
     }
 

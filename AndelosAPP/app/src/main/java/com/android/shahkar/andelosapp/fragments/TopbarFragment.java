@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.CheckoutActivity;
@@ -21,7 +22,7 @@ import com.android.shahkar.andelosapp.network.NetworkConnectivity;
 
 public class TopbarFragment extends Fragment {
 
-    Button btn_login;
+    Button btn_login,btn_checkout,btn_back;
     TextView txt_welcome;
 
     public TopbarFragment() {
@@ -57,7 +58,7 @@ public class TopbarFragment extends Fragment {
             }
         });
 
-        Button btn_checkout = (Button) rootView.findViewById(R.id.btn_checkout);
+        btn_checkout = (Button) rootView.findViewById(R.id.btn_checkout);
         btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,8 +66,15 @@ public class TopbarFragment extends Fragment {
                 startActivity(checkoutIntent);
             }
         });
+        btn_back = (Button) rootView.findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
 
-        setLoginStatus();
+        setTopBar();
 
         return rootView;
     }
@@ -77,19 +85,19 @@ public class TopbarFragment extends Fragment {
 
         if (requestCode == ApplicationConstant.LOGIN_REQUEST) {
             if (resultCode == getActivity().RESULT_OK) {
-                setLoginStatus();
+                setTopBar();
             }
         } else if (requestCode == ApplicationConstant.USER_REQUEST) {
             if (resultCode == getActivity().RESULT_OK) {
-                setLoginStatus();
+                setTopBar();
             }
 
         }
     }
 
-    private void setLoginStatus() {
+    private void setTopBar() {
 
-        NetworkConnectivity net=new NetworkConnectivity(getActivity());
+        NetworkConnectivity net = new NetworkConnectivity(getActivity());
 
         if (net.isLoggedIn()) {
             SharedPreferences prefs = getActivity().getSharedPreferences(
@@ -99,10 +107,22 @@ public class TopbarFragment extends Fragment {
             btn_login.setVisibility(View.INVISIBLE);
             txt_welcome.setVisibility(View.VISIBLE);
             txt_welcome.setText("Hi " + firstName + "!");
-        }
-        else {
+        } else {
             btn_login.setVisibility(View.VISIBLE);
             txt_welcome.setVisibility(View.INVISIBLE);
+        }
+
+        if (isAdded()) {
+            String activityName = getActivity().getClass().getSimpleName();
+            if(activityName.equals("CheckoutActivity")) {
+                btn_checkout.setVisibility(View.INVISIBLE);
+                btn_back.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                btn_checkout.setVisibility(View.VISIBLE);
+                btn_back.setVisibility(View.INVISIBLE);
+            }
         }
     }
 

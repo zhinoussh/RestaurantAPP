@@ -46,6 +46,7 @@ public class DataBaseHandler {
     public List<Order> getOrderList(){
         List<Order> orders=new ArrayList<Order>();
         String [] select_columns=new String[]{"MenuItemName","MenuItemCount","price"};
+        openDB();
         Cursor cursor= mDatabase.query("OrderTable",select_columns,null,null,null,null,null);
 
         while (cursor.moveToNext())
@@ -56,6 +57,8 @@ public class DataBaseHandler {
             orderItem.setPrice(cursor.getDouble(cursor.getColumnIndex("price")));
             orders.add(orderItem);
         }
+        cursor.close();
+        closeDB();
         return  orders;
     }
 
