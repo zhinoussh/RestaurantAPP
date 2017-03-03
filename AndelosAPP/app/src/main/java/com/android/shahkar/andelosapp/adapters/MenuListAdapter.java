@@ -22,9 +22,6 @@ import com.squareup.picasso.Picasso;
 import java.text.NumberFormat;
 import java.util.List;
 
-/**
- * Created by User on 2/1/2017.
- */
 public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
     private Context myContext;

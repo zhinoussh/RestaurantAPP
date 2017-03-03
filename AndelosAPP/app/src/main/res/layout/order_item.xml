@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/txt_rowNumber"
+        android:layout_width="0dp"
+        android:layout_weight=".1"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/PrimaryFontSize"/>
+
+    <TextView
+        android:id="@+id/txt_orderName"
+        android:layout_width="0dp"
+        android:layout_weight=".1"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/PrimaryFontSize"/>
+    <TextView
+        android:id="@+id/txt_orderNumber"
+        android:layout_width="0dp"
+        android:layout_weight=".1"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/PrimaryFontSize"/>
+
+    <TextView
+        android:id="@+id/txt_orderPrice"
+        android:layout_width="0dp"
+        android:layout_weight=".1"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/PrimaryFontSize"/>
+
+</LinearLayout>

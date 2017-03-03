@@ -27,9 +27,10 @@
             android:name=".activities.SignupActivity"
             android:theme="@style/AppTheme.Login"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.UserActivity"
-            android:theme="@style/AppTheme.Login"></activity>
+        <activity
+            android:name=".activities.UserActivity"
+            android:theme="@style/AppTheme.Login" />
+        <activity android:name=".activities.CheckoutActivity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.activities.CheckoutActivity;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
 import com.android.shahkar.andelosapp.activities.UserActivity;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
@@ -56,12 +57,12 @@ public class TopbarFragment extends Fragment {
             }
         });
 
-        btn_login = (Button) rootView.findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        Button btn_checkout = (Button) rootView.findViewById(R.id.btn_checkout);
+        btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
-                startActivityForResult(loginIntent, ApplicationConstant.LOGIN_REQUEST);
+                Intent checkoutIntent = new Intent(getContext(), CheckoutActivity.class);
+                startActivity(checkoutIntent);
             }
         });
 
