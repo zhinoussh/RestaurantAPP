@@ -11,6 +11,9 @@ public class Order {
     private int MenuItemCount;
     private double price;
 
+    public Order() {
+    }
+
     public Order(int menuItemId, String menuItemName, int menuItemCount, double price) {
        MenuItemId = menuItemId;
         MenuItemName = menuItemName;
@@ -68,4 +71,6 @@ public class Order {
 
         return  values;
     }
+
+
 }

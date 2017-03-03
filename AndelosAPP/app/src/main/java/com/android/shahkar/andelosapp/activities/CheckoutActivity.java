@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.OrderAdapter;
+import com.android.shahkar.andelosapp.database.DataBaseHandler;
 import com.android.shahkar.andelosapp.models.Order;
 
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        List<Order> lst_orders=new ArrayList<>();
+        DataBaseHandler dbHandler=new DataBaseHandler(this);
+        List<Order> lst_orders=dbHandler.getOrderList();
         OrderAdapter adapter=new OrderAdapter(lst_orders,this);
         RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycler_orders);
         recyclerView.setAdapter(adapter);
