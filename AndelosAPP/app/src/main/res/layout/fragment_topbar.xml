@@ -12,6 +12,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/lyt_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -24,16 +25,16 @@
                 android:background="@android:color/transparent"
                 android:drawableLeft="@drawable/checkout"/>
             <TextView
-                android:id="@+id/textOne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/badge_checkout"
+                android:layout_width="@dimen/width_badge"
+                android:layout_height="@dimen/width_badge"
                 android:layout_alignTop="@id/btn_checkout"
                 android:layout_alignRight="@id/btn_checkout"
-                android:text="10"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:background="@drawable/badge_circle"/>
+                android:textSize="@dimen/PrimaryFontSize"
+                android:background="@drawable/badge_circle"
+                android:visibility="invisible"
+                android:textColor="@color/UserFontColor"
+                android:gravity="center"/>
         </RelativeLayout>
 
 

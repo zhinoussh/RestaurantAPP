@@ -7,7 +7,7 @@
         android:color="@color/OrderColor" />
     <stroke
         android:width="2dip"
-        android:color="#FFF" />
+        android:color="@color/UserFontColor" />
     <padding
         android:left="5dip"
         android:right="5dip"

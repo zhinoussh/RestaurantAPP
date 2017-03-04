@@ -18,6 +18,7 @@
     <dimen name="height_orderButton">40dp</dimen>
     <dimen name="width_orderButton">100dp</dimen>
     <dimen name="width_height_add_Button">15dp</dimen>
+    <dimen name="width_badge">30dp</dimen>
 
 
 </resources>

@@ -1,5 +1,7 @@
 package com.android.shahkar.andelosapp.adapters;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 

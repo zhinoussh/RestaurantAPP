@@ -1,5 +1,7 @@
 package com.android.shahkar.andelosapp.activities;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
@@ -7,6 +9,7 @@ import android.widget.Toast;
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.database.DataBaseHelper;
 import com.android.shahkar.andelosapp.fragments.ErrorDialogFragment;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.network.NetworkConnectivity;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,10 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static boolean isWideScreen;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TopbarFragment topbarFragment=new TopbarFragment();
+        getFragmentManager().beginTransaction().add(R.id.topbar_fragment_container
+        ,topbarFragment).commit();
 
         NetworkConnectivity netStatus = new NetworkConnectivity(this);
         if (!netStatus.checkNetworkStatus())
@@ -45,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TopbarFragment topbarFragment=new TopbarFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.topbar_fragment_container,topbarFragment).commit();
     }
 
     private void InitializeDataBase() throws SQLException, IOException {

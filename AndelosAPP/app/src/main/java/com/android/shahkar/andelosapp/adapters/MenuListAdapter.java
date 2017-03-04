@@ -1,6 +1,7 @@
 package com.android.shahkar.andelosapp.adapters;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
-import com.android.shahkar.andelosapp.database.DataBaseHelper;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
 import com.squareup.picasso.Picasso;
@@ -24,14 +25,14 @@ import java.util.List;
 
 public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
-    private Context myContext;
+    private Context mContext;
     private List<RestaurantMenuItem> lst_menu;
     private static final String PHOTO_BASE_URL="http://10.0.2.2:8001/Upload/Menu/";
 
 
     public MenuListAdapter(Context context, int resource, List<RestaurantMenuItem> menuList) {
         super(context, resource, menuList);
-        myContext=context;
+        mContext=context;
         lst_menu = menuList;
     }
 
@@ -40,7 +41,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
         final ViewHolder holder;
         try {
             if (convertView == null) {
-                LayoutInflater inflater = ((Activity) myContext).getLayoutInflater();
+                LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
                 convertView = inflater.inflate(R.layout.menu_list_item, parent, false);
 
                 holder = new ViewHolder();
@@ -56,7 +57,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
 
             final RestaurantMenuItem MenuItem = lst_menu.get(position);
-            Typeface face = Typeface.createFromAsset(myContext.getAssets(),
+            Typeface face = Typeface.createFromAsset(mContext.getAssets(),
                     "fonts/Ubuntu-Medium.ttf");
             holder.txt_MenuName.setTypeface(face);
             holder.txt_MenuName.setText(MenuItem.getMenuItemName());
@@ -74,11 +75,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
             holder.btn_order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DataBaseHandler dbHandler=new DataBaseHandler(myContext);
-                    int orderNum=Integer.parseInt(holder.txt_orderNum.getText().toString());
-                    Order newOrder=new Order(MenuItem.getMenuItemID()
-                            ,MenuItem.getMenuItemName(),orderNum,MenuItem.getPrice());
-                    dbHandler.insertOrder(newOrder);
+                    AddOrder(holder, MenuItem);
                 }
             });
         }
@@ -88,6 +85,18 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
 
         }
         return convertView;
+    }
+
+    private void AddOrder(ViewHolder holder, RestaurantMenuItem menuItem) {
+        DataBaseHandler dbHandler=new DataBaseHandler(mContext);
+        int orderNum=Integer.parseInt(holder.txt_orderNum.getText().toString());
+        Order newOrder=new Order(menuItem.getMenuItemID()
+                , menuItem.getMenuItemName(),orderNum, menuItem.getPrice());
+        dbHandler.insertOrder(newOrder);
+
+        FragmentManager fragmentManager=((Activity)mContext).getFragmentManager();
+        TopbarFragment topbarFragment=new TopbarFragment();
+        fragmentManager.beginTransaction().replace(R.id.topbar_fragment_container,topbarFragment).commit();
     }
 
     static class ViewHolder

@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.OrderAdapter;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -21,6 +19,10 @@ public class CheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        TopbarFragment topbarFragment=new TopbarFragment();
+        getFragmentManager().beginTransaction().add(R.id.topbar_fragment_container
+                ,topbarFragment).commit();
 
         Typeface face=Typeface.createFromAsset(getAssets(),"fonts/Ubuntu-Medium.ttf");
         TextView txt_review_order= (TextView) findViewById(R.id.txt_reviewOrder);

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.fragments.MenuListFragment;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -15,6 +16,10 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        TopbarFragment topbarFragment=new TopbarFragment();
+        getFragmentManager().beginTransaction().add(R.id.topbar_fragment_container
+                ,topbarFragment).commit();
 
         try {
             int CategoryID = getIntent().getIntExtra("CategoryID", 0);
@@ -29,5 +34,13 @@ public class MenuActivity extends AppCompatActivity {
         } catch (Exception ex) {
             Log.d("Load Menu Fragment", ex.toString());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TopbarFragment topbarFragment=new TopbarFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.topbar_fragment_container,topbarFragment).commit();
     }
 }
