@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.LoginService;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         Typeface font_logo = Typeface.DEFAULT.createFromAsset(getAssets(), "fonts/LobsterTwo-Bold.ttf");
         TextView txt_loginLogo = (TextView) findViewById(R.id.txt_loginLogo);

@@ -5,25 +5,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.CheckoutActivity;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
 import com.android.shahkar.andelosapp.activities.UserActivity;
+import com.android.shahkar.andelosapp.database.DataBaseHandler;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 import com.android.shahkar.andelosapp.network.NetworkConnectivity;
 
 public class TopbarFragment extends Fragment {
 
     Button btn_login,btn_checkout,btn_back;
-    TextView txt_welcome;
+    TextView txt_welcome,badge_checkout;
+    RelativeLayout lyt_checkout;
 
     public TopbarFragment() {
         // Required empty public constructor
@@ -74,6 +75,11 @@ public class TopbarFragment extends Fragment {
             }
         });
 
+        badge_checkout = (TextView) rootView.findViewById(R.id.badge_checkout);
+        badge_checkout.setTypeface(font_welcome);
+
+        lyt_checkout= (RelativeLayout) rootView.findViewById(R.id.lyt_checkout);
+
         setTopBar();
 
         return rootView;
@@ -98,7 +104,6 @@ public class TopbarFragment extends Fragment {
     private void setTopBar() {
 
         NetworkConnectivity net = new NetworkConnectivity(getActivity());
-
         if (net.isLoggedIn()) {
             SharedPreferences prefs = getActivity().getSharedPreferences(
                     getResources().getString(R.string.app_name), getActivity().MODE_PRIVATE);
@@ -115,15 +120,26 @@ public class TopbarFragment extends Fragment {
         if (isAdded()) {
             String activityName = getActivity().getClass().getSimpleName();
             if(activityName.equals("CheckoutActivity")) {
-                btn_checkout.setVisibility(View.INVISIBLE);
+                lyt_checkout.setVisibility(View.INVISIBLE);
                 btn_back.setVisibility(View.VISIBLE);
             }
             else
             {
-                btn_checkout.setVisibility(View.VISIBLE);
+                lyt_checkout.setVisibility(View.VISIBLE);
                 btn_back.setVisibility(View.INVISIBLE);
             }
         }
+
+        DataBaseHandler dbHandler=new DataBaseHandler(getContext());
+        int count_order_list=dbHandler.getOrderCount();
+        if(count_order_list>0) {
+            badge_checkout.setVisibility(View.VISIBLE);
+            badge_checkout.setText(count_order_list+"");
+        }
+        else
+            badge_checkout.setVisibility(View.INVISIBLE);
+
+
     }
 
 }

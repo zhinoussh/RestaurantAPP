@@ -9,15 +9,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_checkout"
+
+
+        <RelativeLayout
+            android:id="@+id/lyt_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/checkout"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" >
+            <Button
+                android:id="@+id/btn_checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/checkout"/>
+            <TextView
+                android:id="@+id/badge_checkout"
+                android:layout_width="@dimen/width_badge"
+                android:layout_height="@dimen/width_badge"
+                android:layout_alignTop="@id/btn_checkout"
+                android:layout_alignRight="@id/btn_checkout"
+                android:textSize="@dimen/PrimaryFontSize"
+                android:background="@drawable/badge_circle"
+                android:visibility="invisible"
+                android:textColor="@color/UserFontColor"
+                android:gravity="center"/>
+        </RelativeLayout>
+
+
+
+
+
+
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"

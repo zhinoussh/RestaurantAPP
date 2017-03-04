@@ -83,9 +83,19 @@ public class DataBaseHandler {
     }
 
     public void Add_Subtract_OrderNumber(int orderId, int number) {
-       String rawSql="update OrderTable set MenuItemCount=MenuItemCount+? where OrderId=?";
+        String rawSql="update OrderTable set MenuItemCount=MenuItemCount+? where OrderId=?";
         openDB();
         mDatabase.execSQL(rawSql,new Object[]{number,orderId});
         closeDB();
+    }
+
+    public int getOrderCount() {
+        int orderCount=0;
+        openDB();
+        String select_count="select count(*) from OrderTable";
+        Cursor cursor=mDatabase.rawQuery(select_count,null);
+        if(cursor.moveToNext())
+            orderCount=cursor.getInt(0);
+        return orderCount;
     }
 }
