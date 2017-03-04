@@ -18,7 +18,7 @@ import com.android.shahkar.andelosapp.activities.LoginActivity;
 import com.android.shahkar.andelosapp.activities.UserActivity;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
-import com.android.shahkar.andelosapp.network.NetworkConnectivity;
+import com.android.shahkar.andelosapp.network.UserConnectivity;
 
 public class TopbarFragment extends Fragment {
 
@@ -85,7 +85,6 @@ public class TopbarFragment extends Fragment {
         return rootView;
     }
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -103,7 +102,7 @@ public class TopbarFragment extends Fragment {
 
     private void setTopBar() {
 
-        NetworkConnectivity net = new NetworkConnectivity(getActivity());
+        UserConnectivity net = new UserConnectivity(getActivity());
         if (net.isLoggedIn()) {
             SharedPreferences prefs = getActivity().getSharedPreferences(
                     getResources().getString(R.string.app_name), getActivity().MODE_PRIVATE);

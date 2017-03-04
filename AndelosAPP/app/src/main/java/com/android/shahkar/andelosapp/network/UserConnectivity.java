@@ -14,11 +14,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class NetworkConnectivity {
+public class UserConnectivity {
 
     private Context activityContext;
 
-    public NetworkConnectivity(Context c) {
+    public UserConnectivity(Context c) {
         activityContext = c;
     }
 

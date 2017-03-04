@@ -36,8 +36,7 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         TopbarFragment topbarFragment=new TopbarFragment();
         getFragmentManager().beginTransaction()
