@@ -101,7 +101,6 @@ public class TopbarFragment extends Fragment {
     }
 
     private void setTopBar() {
-
         UserConnectivity net = new UserConnectivity(getActivity());
         if (net.isLoggedIn()) {
             SharedPreferences prefs = getActivity().getSharedPreferences(

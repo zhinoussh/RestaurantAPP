@@ -47,7 +47,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:padding="15dp"
-        android:text="@string/FinalizeOrder"
         android:background="@drawable/btn_order"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/DialogBGColor"

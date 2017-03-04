@@ -30,7 +30,8 @@
         <activity
             android:name=".activities.UserActivity"
             android:theme="@style/AppTheme.Login" />
-        <activity android:name=".activities.CheckoutActivity"></activity>
+        <activity android:name=".activities.CheckoutActivity" />
+        <activity android:name=".activities.DeliveryDetailActivity"></activity>
     </application>
 
 </manifest>
