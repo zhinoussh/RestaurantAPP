@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.activities.CheckoutActivity;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
 import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
@@ -68,6 +69,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                     dbHandler.Add_Subtract_OrderNumber(OrderId, 1);
                     mOrders.get(position).setMenuItemCount(new_value);
                     notifyItemChanged(position);
+                    setTotalPrice();
                 }
             }
         });
@@ -79,6 +81,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                     dbHandler.Add_Subtract_OrderNumber(OrderId, -1);
                     mOrders.get(position).setMenuItemCount(new_value);
                     notifyItemChanged(position);
+                    setTotalPrice();
                 }
             }
         });
@@ -88,8 +91,22 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                 dbHandler.RemoveOrderItem(OrderId);
                 mOrders.remove(position);
                 notifyItemRemoved(position);
+                setTotalPrice();
             }
         });
+
+    }
+
+    private void setTotalPrice() {
+        double total = 0;
+        for (Order o : mOrders) {
+            total += (o.getPrice() * o.getMenuItemCount());
+        }
+        String totalPrice="";
+        if (total > 0)
+            totalPrice="Total Price: $ " + String.valueOf(total);
+
+        CheckoutActivity.txt_totalPrice.setText(totalPrice);
 
     }
 

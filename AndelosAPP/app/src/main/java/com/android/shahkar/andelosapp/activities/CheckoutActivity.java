@@ -20,6 +20,7 @@ import java.util.List;
 
 public class CheckoutActivity extends AppCompatActivity {
 
+    public static TextView txt_totalPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +40,9 @@ public class CheckoutActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_orders);
         recyclerView.setAdapter(adapter);
 
-        TextView txt_totalPrice = (TextView) findViewById(R.id.txt_totalPrice);
+        txt_totalPrice = (TextView) findViewById(R.id.txt_totalPrice);
         txt_totalPrice.setTypeface(face);
-        double total = 0;
+               double total = 0;
         for (Order o : lst_orders) {
             total += (o.getPrice() * o.getMenuItemCount());
         }
