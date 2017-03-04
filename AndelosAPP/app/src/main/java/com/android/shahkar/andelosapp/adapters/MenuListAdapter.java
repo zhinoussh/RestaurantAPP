@@ -70,6 +70,7 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
                     .resize(200,200)
                     .into(holder.img_Menu);
 
+            holder.btn_order.setTypeface(face);
             holder.btn_order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

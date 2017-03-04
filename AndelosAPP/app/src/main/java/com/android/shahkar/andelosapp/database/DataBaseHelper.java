@@ -14,8 +14,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final String DB_NAME = "restaurantDB.sqlite";
     public static final int DB_VERSION=1;
 
-    private SQLiteDatabase myDataBase;
-    private final Context myContext;
+    private SQLiteDatabase mDataBase;
+    private final Context mContext;
     private static DataBaseHelper mInstance = null;
 
     public static DataBaseHelper getInstance(Context ctx) {
@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public DataBaseHelper(Context context) {
         super(context, DB_NAME, null,DB_VERSION);
-        this.myContext = context;
+        this.mContext = context;
     }
 
     public void createDataBase() throws IOException{
@@ -58,22 +58,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
      * @return true if it exists, false if it doesn't
      */
     private boolean checkDataBase(){
-
-        SQLiteDatabase checkDB = null;
-
-        try{
-            String myPath = DB_PATH + DB_NAME;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
-        }catch(SQLiteException e){
-            //database does't exist yet.
-        }
-
-        if(checkDB != null){
-            checkDB.close();
-        }
-
-        return checkDB != null ? true : false;
+        File databasePath = mContext.getDatabasePath(DB_NAME);
+        return databasePath.exists();
     }
 
     /**
@@ -84,7 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private void copyDataBase() throws IOException{
 
         //Open your local db as the input stream
-        InputStream myInput = myContext.getAssets().open(DB_NAME);
+        InputStream myInput = mContext.getAssets().open(DB_NAME);
 
         // Path to the just created empty db
         String outFileName = DB_PATH + DB_NAME;
@@ -110,14 +96,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
         //Open the database
         String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        mDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
     }
 
     @Override
     public synchronized void close() {
 
-        if(myDataBase != null)
-            myDataBase.close();
+        if(mDataBase != null)
+            mDataBase.close();
 
         super.close();
 
@@ -125,13 +111,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Toast.makeText(myContext,"onCreate Database",Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext,"onCreate Database",Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Toast.makeText(myContext,"onUpgrade Database version:"+ oldVersion,Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext,"onUpgrade Database version:"+ oldVersion,Toast.LENGTH_LONG).show();
     }
 
     // Add your public helper methods to access and get content from the database.

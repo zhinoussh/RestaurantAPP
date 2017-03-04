@@ -11,5 +11,6 @@
     <color name="ActiveControlFontColor">#866f64</color>
     <color name="ErrorFontColor">#ed0b04</color>
     <color name="UserFontColor">#dfd8c2</color>
+    <color name="OrderColor">#4c97aa</color>
 
 </resources>

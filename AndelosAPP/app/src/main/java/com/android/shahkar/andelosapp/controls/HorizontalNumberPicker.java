@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 
 public class HorizontalNumberPicker extends LinearLayout {
 
@@ -23,8 +24,7 @@ public class HorizontalNumberPicker extends LinearLayout {
     private final int ELEMENT_HEIGHT = 60;
     private final int ELEMENT_WIDTH = ELEMENT_HEIGHT; // you're all squares, yo
 
-    private final int MINIMUM = 1;
-    private final int MAXIMUM = 999;
+
 
     private final int TEXT_SIZE = 30;
 
@@ -201,14 +201,14 @@ public class HorizontalNumberPicker extends LinearLayout {
     }
 
     public void increment(){
-        if( value < MAXIMUM ){
+        if( value < ApplicationConstant.MAXNUMPICKER){
             value = value + 1;
             valueText.setText( value.toString() );
         }
     }
 
     public void decrement(){
-        if( value > MINIMUM ){
+        if( value > ApplicationConstant.MINNUMPICKER ){
             value = value - 1;
             valueText.setText( value.toString() );
         }
@@ -219,7 +219,7 @@ public class HorizontalNumberPicker extends LinearLayout {
     }
 
     public void setValue( int value ){
-        if( value > MAXIMUM ) value = MAXIMUM;
+        if( value > ApplicationConstant.MAXNUMPICKER) value = ApplicationConstant.MAXNUMPICKER;
         if( value >= 0 ){
             this.value = value;
             valueText.setText( this.value.toString() );

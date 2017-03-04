@@ -8,6 +8,8 @@
     <dimen name="menu_image">200dp</dimen>
     <dimen name="CategoryFontSize">12pt</dimen>
     <dimen name="PrimaryFontSize">8pt</dimen>
+    <dimen name="OrderFontSize">8.5pt</dimen>
+
     <dimen name="text_margin">16dp</dimen>
     <dimen name="btn_padding">5dp</dimen>
     <dimen name="AppbarFontSize">15pt</dimen>
@@ -15,6 +17,7 @@
     <dimen name="welcomeString">100dp</dimen>
     <dimen name="height_orderButton">40dp</dimen>
     <dimen name="width_orderButton">100dp</dimen>
+    <dimen name="width_height_add_Button">15dp</dimen>
 
 
 </resources>

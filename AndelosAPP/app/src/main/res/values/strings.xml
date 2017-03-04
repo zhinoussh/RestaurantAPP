@@ -17,6 +17,9 @@
     <string name="OrderTitle">Title</string>
     <string name="Num">Number</string>
     <string name="price">Price</string>
+    <string name="ReviewOrder">Review Your Order</string>
+    <string name="FinalizeOrder">Finalize Your Order</string>
+
 
 
 </resources>

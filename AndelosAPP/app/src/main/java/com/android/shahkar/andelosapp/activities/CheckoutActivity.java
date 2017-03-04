@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
@@ -22,20 +23,17 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
 
         Typeface face=Typeface.createFromAsset(getAssets(),"fonts/Ubuntu-Medium.ttf");
-        TextView txt_title_rowNum= (TextView) findViewById(R.id.txt_title_rowNumber);
-        TextView txt_title_orderName= (TextView) findViewById(R.id.txt_title_orderName);
-        TextView txt_title_orderNumber= (TextView) findViewById(R.id.txt_title_orderNumber);
-        TextView txt_title_orderPrice= (TextView) findViewById(R.id.txt_title_orderPrice);
+        TextView txt_review_order= (TextView) findViewById(R.id.txt_reviewOrder);
 
-        txt_title_rowNum.setTypeface(face);
-        txt_title_orderName.setTypeface(face);
-        txt_title_orderNumber.setTypeface(face);
-        txt_title_orderPrice.setTypeface(face);
+        txt_review_order.setTypeface(face);
 
         DataBaseHandler dbHandler=new DataBaseHandler(this);
         List<Order> lst_orders=dbHandler.getOrderList();
         OrderAdapter adapter=new OrderAdapter(lst_orders,this);
         RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycler_orders);
         recyclerView.setAdapter(adapter);
+
+        Button btn_finalize_order= (Button) findViewById(R.id.btn_finalize_order);
+        btn_finalize_order.setTypeface(face);
     }
 }

@@ -12,48 +12,38 @@
         android:id="@+id/tool_bar"
         layout="@layout/content_topbar"></include>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txt_reviewOrder"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_margin="@dimen/activity_horizontal_margin">
-        <TextView
-            android:id="@+id/txt_title_rowNumber"
-            android:layout_width="0dp"
-            android:layout_weight=".1"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/PrimaryFontSize"
-            android:text="@string/rowNumber"/>
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/CategoryFontSize"
+        android:textColor="@color/OrderColor"
+        android:text="@string/ReviewOrder"
+        android:layout_marginTop="40dp"
+        android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/txt_title_orderName"
-            android:layout_width="0dp"
-            android:layout_weight=".5"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/PrimaryFontSize"
-            android:text="@string/OrderTitle"/>
-        <TextView
-            android:id="@+id/txt_title_orderNumber"
-            android:layout_width="0dp"
-            android:layout_weight=".2"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/PrimaryFontSize"
-            android:text="@string/Num"/>
-
-        <TextView
-            android:id="@+id/txt_title_orderPrice"
-            android:layout_width="0dp"
-            android:layout_weight=".2"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/PrimaryFontSize"
-            android:text="@string/price"/>
-    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_orders"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".8"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        app:layoutManager="LinearLayoutManager">
+        app:layoutManager="LinearLayoutManager"
+        android:layout_marginTop="20dp"
+        >
     </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btn_finalize_order"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/bnt_swap"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:padding="15dp"
+        android:text="@string/FinalizeOrder"
+        android:background="@drawable/btn_order"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/DialogBGColor"
+        android:textSize="@dimen/OrderFontSize"></Button>
 </LinearLayout>
