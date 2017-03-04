@@ -1,7 +1,5 @@
 package com.android.shahkar.andelosapp.activities;
 
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
@@ -10,7 +8,7 @@ import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.database.DataBaseHelper;
 import com.android.shahkar.andelosapp.fragments.ErrorDialogFragment;
 import com.android.shahkar.andelosapp.fragments.TopbarFragment;
-import com.android.shahkar.andelosapp.network.NetworkConnectivity;
+import com.android.shahkar.andelosapp.network.UserConnectivity;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction().add(R.id.topbar_fragment_container
         ,topbarFragment).commit();
 
-        NetworkConnectivity netStatus = new NetworkConnectivity(this);
+        UserConnectivity netStatus = new UserConnectivity(this);
         if (!netStatus.checkNetworkStatus())
             showConnectionErrorDialog();
         else {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         TopbarFragment topbarFragment=new TopbarFragment();
         getFragmentManager().beginTransaction()
@@ -67,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.createDataBase();
         dbHelper.openDataBase();
     }
-
 
     private void showConnectionErrorDialog() {
         ErrorDialogFragment dialog = new ErrorDialogFragment();
