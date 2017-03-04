@@ -23,14 +23,22 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_orders"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".8"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         app:layoutManager="LinearLayoutManager"
         android:layout_marginTop="20dp"
         >
     </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/txt_totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/PrimaryFontSize"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="right"/>
 
     <Button
         android:id="@+id/btn_finalize_order"

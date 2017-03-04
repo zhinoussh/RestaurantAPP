@@ -26,7 +26,6 @@ public class CheckoutActivity extends AppCompatActivity {
 
         Typeface face=Typeface.createFromAsset(getAssets(),"fonts/Ubuntu-Medium.ttf");
         TextView txt_review_order= (TextView) findViewById(R.id.txt_reviewOrder);
-
         txt_review_order.setTypeface(face);
 
         DataBaseHandler dbHandler=new DataBaseHandler(this);
@@ -34,6 +33,15 @@ public class CheckoutActivity extends AppCompatActivity {
         OrderAdapter adapter=new OrderAdapter(lst_orders,this);
         RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycler_orders);
         recyclerView.setAdapter(adapter);
+
+        TextView txt_totalPrice= (TextView)findViewById(R.id.txt_totalPrice);
+        txt_totalPrice.setTypeface(face);
+        double total=0;
+        for (Order o :lst_orders) {
+            total+=(o.getPrice()*o.getMenuItemCount());
+        }
+        if(total>0)
+            txt_totalPrice.setText("Total Price: $ "+String.valueOf(total));
 
         Button btn_finalize_order= (Button) findViewById(R.id.btn_finalize_order);
         btn_finalize_order.setTypeface(face);
