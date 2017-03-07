@@ -1,6 +1,8 @@
 package com.android.shahkar.andelosapp.activities;
 
+import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.shahkar.andelosapp.R;
+import com.android.shahkar.andelosapp.fragments.ProfileFragment;
 import com.android.shahkar.andelosapp.network.APIService;
 import com.android.shahkar.andelosapp.network.LogoutService;
 import com.android.shahkar.andelosapp.network.ServiceGenerator;
@@ -26,38 +29,34 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        Typeface font = Typeface.DEFAULT.createFromAsset(getAssets(), "fonts/LobsterTwo-Bold.ttf");
 
-        Button btn_logout = (Button) findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(new View.OnClickListener() {
+        //Initialize User Activity with Profile Fragment
+        ProfileFragment fragment = new ProfileFragment();
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_user_content, fragment, "ProfileFragment")
+                .commit();
+
+        Button btnProfile=(Button)findViewById(R.id.btn_profile);
+        btnProfile.setTypeface(font);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logoutProcess();
+
+                Fragment currentFragment=getFragmentManager().findFragmentById(R.id.frame_user_content);
+                if(!(currentFragment instanceof ProfileFragment)) {
+                    ProfileFragment fragment = new ProfileFragment();
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frame_user_content, fragment, "ProfileFragment")
+                            .commit();
+                }
             }
         });
-    }
 
-    private void logoutProcess() {
-
-        ProgressBar progress = (ProgressBar) findViewById(R.id.logout_progress);
-
-        final SharedPreferences pref = getSharedPreferences(getResources().getString(R.string.app_name), MODE_PRIVATE);
-
-        String authToken = pref.getString(ApplicationConstant.TOKEN_PREF_KEY, null);
-        APIService api = ServiceGenerator.createService(authToken);
-        Call<ResponseBody> call_logout = api.LogoutUser();
-        LogoutService service = new LogoutService(call_logout);
-        service.PostObject(new ResultCallBackObject() {
-            @Override
-            public void OnResultReady(Object return_object, String message) {
-                if (message == "Success") {
-                    pref.edit().clear().commit();
-                    setResult(RESULT_OK, getIntent());
-                    finish();
-                } else
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-
-            }
-        }, progress);
 
     }
+
+
 }

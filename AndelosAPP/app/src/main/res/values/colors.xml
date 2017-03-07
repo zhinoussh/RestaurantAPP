@@ -12,5 +12,6 @@
     <color name="ErrorFontColor">#ed0b04</color>
     <color name="UserFontColor">#dfd8c2</color>
     <color name="OrderColor">#4c97aa</color>
+    <color name="PrifleButtonColor">#bca397</color>
 
 </resources>
