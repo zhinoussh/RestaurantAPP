@@ -19,7 +19,9 @@
     <string name="price">Price</string>
     <string name="ReviewOrder">Review Your Order</string>
     <string name="FinalizeOrder">Finalize Your Order</string>
-
-
+    <string name="Profile">Profile</string>
+    <string name="Favorites">Favorites</string>
+    <string name="PreviousOrder">Previous Orders</string>
+    <string name="EditProfile">Edit Your Profile Here...</string>
 
 </resources>
