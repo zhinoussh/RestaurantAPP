@@ -49,6 +49,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        TextView txt_EditProfile=(TextView)rootView.findViewById(R.id.txt_enter_details);
+        txt_EditProfile.setTypeface(font);
+
         return rootView;
     }
 

@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/txt_enter_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EnterDetails"
+        android:textSize="@dimen/OrderFontSize"
+        android:textColor="@color/ActiveControlFontColor"
+        android:layout_toLeftOf="@+id/btn_logout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="20dp"/>
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="120dp"
@@ -15,7 +27,101 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"></Button>
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:layout_below="@+id/txt_enter_details"
+        android:isScrollContainer="false">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bnt_swap"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/txt_profile_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="First Name"
+                android:textColor="@color/DarkOrangeColor"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/txt_profile_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
+                android:textColor="@color/DarkOrangeColor"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/txt_profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textColor="@color/DarkOrangeColor"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/txt_profile_PhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="text|phone"
+                android:textColor="@color/DarkOrangeColor"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/txt_profile_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address..."
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:gravity="top|left"
+                android:scrollbars="vertical"
+                android:textColor="@color/DarkOrangeColor"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_save_profile"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/bnt_swap"
+            android:text="@string/Logout"
+            android:textColor="@color/UserFontColor"
+            android:background="@drawable/btn_save_profile"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"></Button>
+    </LinearLayout>
+</ScrollView>
     <ProgressBar
         android:id="@+id/user_progress"
         android:layout_width="wrap_content"

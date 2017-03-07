@@ -20,6 +20,7 @@
     <string name="FinalizeOrder">Finalize Your Order</string>
     <string name="Profile">Profile</string>
     <string name="Favorites">Favorite</string>
-    <string name="PreviousOrder">Order List</string>
+    <string name="PreviousOrder">Orders</string>
+    <string name="EnterDetails">Enter Your Details</string>
 
 </resources>

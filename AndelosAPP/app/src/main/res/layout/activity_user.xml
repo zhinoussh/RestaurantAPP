@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:orientation="horizontal">
 
         <Button
@@ -37,7 +38,8 @@
             android:background="@drawable/btn_profile"
             android:drawableLeft="@drawable/profile"
             android:text="@string/Profile"
-            android:textSize="@dimen/ProfileButtonFontSize"/>
+            android:textSize="@dimen/ProfileButtonFontSize"
+            android:layout_marginLeft="2dp" />
 
         <Button
             android:id="@+id/btn_favorites"
@@ -46,7 +48,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/btn_profile"
             android:drawableLeft="@drawable/favorite"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/Favorites"
             android:textSize="@dimen/ProfileButtonFontSize"/>
 
@@ -57,9 +59,10 @@
             android:layout_height="match_parent"
             android:background="@drawable/btn_profile"
             android:drawableLeft="@drawable/orders"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/PreviousOrder"
-            android:textSize="@dimen/ProfileButtonFontSize"/>
+            android:textSize="@dimen/ProfileButtonFontSize"
+            android:layout_marginRight="2dp" />
     </LinearLayout>
 </RelativeLayout>
 
