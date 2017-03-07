@@ -2,7 +2,6 @@
     <string name="app_name">Andelos</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ChooseCategory">Swap Category List and Choose Item</string>
     <string name="NetworkError">Internet connection is required for this application!</string>
     <string name="NetworkErrorTitle">Connection Error</string>
@@ -20,8 +19,7 @@
     <string name="ReviewOrder">Review Your Order</string>
     <string name="FinalizeOrder">Finalize Your Order</string>
     <string name="Profile">Profile</string>
-    <string name="Favorites">Favorites</string>
-    <string name="PreviousOrder">Previous Orders</string>
-    <string name="EditProfile">Edit Your Profile Here...</string>
+    <string name="Favorites">Favorite</string>
+    <string name="PreviousOrder">Order List</string>
 
 </resources>

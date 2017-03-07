@@ -29,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        Typeface font = Typeface.DEFAULT.createFromAsset(getAssets(), "fonts/LobsterTwo-Bold.ttf");
+        Typeface font = Typeface.DEFAULT.createFromAsset(getAssets(), "fonts/Ubuntu-Medium.ttf");
 
         //Initialize User Activity with Profile Fragment
         ProfileFragment fragment = new ProfileFragment();
@@ -54,6 +54,27 @@ public class UserActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button btnFavorite=(Button)findViewById(R.id.btn_favorites);
+        btnFavorite.setTypeface(font);
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+        Button btnPreviousOrders=(Button)findViewById(R.id.btn_previousOrders);
+        btnPreviousOrders.setTypeface(font);
+        btnPreviousOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
 
 
     }

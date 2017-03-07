@@ -9,8 +9,8 @@
     <dimen name="CategoryFontSize">12pt</dimen>
     <dimen name="PrimaryFontSize">8pt</dimen>
     <dimen name="OrderFontSize">8.5pt</dimen>
-    <dimen name="ProfileButtonFontSize">5pt</dimen>
-    <dimen name="height_logoutButton">60dp</dimen>
+    <dimen name="ProfileButtonFontSize">7pt</dimen>
+    <dimen name="height_logoutButton">50dp</dimen>
 
     <dimen name="text_margin">16dp</dimen>
     <dimen name="btn_padding">5dp</dimen>

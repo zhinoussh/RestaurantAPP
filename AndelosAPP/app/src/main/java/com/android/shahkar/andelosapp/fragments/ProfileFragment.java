@@ -3,6 +3,7 @@ package com.android.shahkar.andelosapp.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.network.APIService;
@@ -33,9 +35,13 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_profile, container, false);
 
+        Typeface font = Typeface.DEFAULT.createFromAsset(getActivity().getAssets()
+                , "fonts/Ubuntu-Medium.ttf");
+
         progress_logout = (ProgressBar)rootView.findViewById(R.id.user_progress);
 
         Button btn_logout = (Button)rootView.findViewById(R.id.btn_logout);
+        btn_logout.setTypeface(font);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

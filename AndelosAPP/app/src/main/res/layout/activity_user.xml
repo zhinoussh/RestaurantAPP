@@ -51,7 +51,7 @@
             android:textSize="@dimen/ProfileButtonFontSize"/>
 
         <Button
-            android:id="@+id/btn_Archive"
+            android:id="@+id/btn_previousOrders"
             android:layout_width="0dp"
             android:layout_weight=".3"
             android:layout_height="match_parent"
