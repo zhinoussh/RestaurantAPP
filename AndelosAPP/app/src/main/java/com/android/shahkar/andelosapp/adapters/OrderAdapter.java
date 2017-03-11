@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.CheckoutActivity;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.database.OrderDataSource;
 import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
@@ -26,12 +27,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
 
     private static List<Order> mOrders;
     private static Context mContext;
-    private static DataBaseHandler dbHandler;
+    private static OrderDataSource ds;
 
     public OrderAdapter(List<Order> mOrders, Context mContext) {
         this.mOrders = mOrders;
         this.mContext = mContext;
-        dbHandler=new DataBaseHandler(mContext);
+        ds=new OrderDataSource(mContext);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
             public void onClick(View v) {
                 int new_value=orderItem.getMenuItemCount()+1;
                 if(new_value<ApplicationConstant.MAXNUMPICKER) {
-                    dbHandler.Add_Subtract_OrderNumber(OrderId, 1);
+                    ds.Add_Subtract_OrderNumber(OrderId, 1);
                     mOrders.get(position).setMenuItemCount(new_value);
                     notifyItemChanged(position);
                     setTotalPrice();
@@ -78,7 +79,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
             public void onClick(View v) {
                 int new_value=orderItem.getMenuItemCount()-1;
                 if(new_value>=ApplicationConstant.MINNUMPICKER) {
-                    dbHandler.Add_Subtract_OrderNumber(OrderId, -1);
+                    ds.Add_Subtract_OrderNumber(OrderId, -1);
                     mOrders.get(position).setMenuItemCount(new_value);
                     notifyItemChanged(position);
                     setTotalPrice();
@@ -88,7 +89,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         holder.btn_remove_orderItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHandler.RemoveOrderItem(OrderId);
+                ds.RemoveOrderItem(OrderId);
                 mOrders.remove(position);
                 notifyItemRemoved(position);
                 setTotalPrice();
@@ -114,7 +115,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
     public int getItemCount() {
         return mOrders.size();
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 

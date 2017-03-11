@@ -23,7 +23,9 @@ public class FetchObjectService<T> {
                 @Override
                 public void onResponse(Call<T> call, Response<T> response) {
                   try {
-                      if(response.isSuccessful()) {
+                      if(response.body()==null)
+                          resultCallBack.OnResultReady(null,"Empty");
+                      else if(response.isSuccessful()) {
                           resultCallBack.OnResultReady( response.body(),"Success");
                       }
                       else {

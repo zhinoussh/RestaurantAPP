@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         pref_editor.putString(ApplicationConstant.USERNAME_PREF_KEY,token.getUserName());
         pref_editor.putString(ApplicationConstant.TOKEN_PREF_KEY, token.getAccessToken());
         pref_editor.putString(ApplicationConstant.FIRSTNAME_PREF_KEY, token.getfirstName());
+        pref_editor.putString(ApplicationConstant.LASTNAME_PREF_KEY, token.getlastName());
         pref_editor.putLong(ApplicationConstant.EXPIRE_PREF_KEY, expire_millis);
 
         pref_editor.apply();

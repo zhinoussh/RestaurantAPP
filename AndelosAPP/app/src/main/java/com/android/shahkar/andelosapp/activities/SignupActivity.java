@@ -78,12 +78,10 @@ public class SignupActivity extends AppCompatActivity {
             RegisterService registerService=new RegisterService(call_register);
             registerService.FetchObject(new ResultCallBackObject() {
                 @Override
-                public void OnResultReady(Object return_object, String message) {
+                public void OnResultReady(Object token, String message) {
                     if(message=="Success")
                     {
-                        getIntent().putExtra("token",(AccessToken)return_object);
-                        setResult(RESULT_OK,getIntent());
-                        finish();
+                        onSignupSuccess(token);
                     }
                     else {
                         txt_error.setText(message);
@@ -96,8 +94,9 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    public void onSignupSuccess() {
-        setResult(RESULT_OK, null);
+    public void onSignupSuccess(Object token) {
+        getIntent().putExtra("token",(AccessToken)token);
+        setResult(RESULT_OK,getIntent());
         finish();
     }
 
