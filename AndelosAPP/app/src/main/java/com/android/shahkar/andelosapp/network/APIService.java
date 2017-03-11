@@ -4,6 +4,7 @@ import com.android.shahkar.andelosapp.models.AccessToken;
 import com.android.shahkar.andelosapp.models.RestaurantCategory;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
 import com.android.shahkar.andelosapp.models.User;
+import com.android.shahkar.andelosapp.models.UserProfile;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -29,7 +31,7 @@ public interface APIService {
     @POST("token")
     public Call<AccessToken> getAccessToken(
             @Field("username") String userName
-            , @Field("password") String pssword
+            , @Field("password") String password
             , @Field("grant_type") String grant_type);
 
     @POST("Account/Register")
@@ -37,4 +39,10 @@ public interface APIService {
 
     @POST("Account/Logout")
     public Call<ResponseBody> LogoutUser();
+
+    @GET("Profile/Get")
+    public Call<UserProfile> GetUserProfile(@Query("username") String username);
+
+    @POST("Profile/Post")
+    public Call<ResponseBody> SaveUserProfile(@Body UserProfile profile);
 }
