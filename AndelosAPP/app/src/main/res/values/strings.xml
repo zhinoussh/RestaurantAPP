@@ -22,5 +22,6 @@
     <string name="Favorites">Favorite</string>
     <string name="PreviousOrder">Orders</string>
     <string name="EnterDetails">Enter Your Details</string>
+    <string name="SaveProfile">Save Profile</string>
 
 </resources>

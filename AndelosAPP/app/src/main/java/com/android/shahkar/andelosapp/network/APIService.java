@@ -44,5 +44,7 @@ public interface APIService {
     public Call<UserProfile> GetUserProfile(@Query("username") String username);
 
     @POST("Profile/Post")
-    public Call<ResponseBody> SaveUserProfile(@Body UserProfile profile);
+    public Call<ResponseBody> SaveUserProfile(
+            @Body UserProfile profile
+            ,@Query("username") String username);
 }

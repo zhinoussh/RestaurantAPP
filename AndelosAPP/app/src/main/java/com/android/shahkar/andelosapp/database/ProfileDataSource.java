@@ -24,6 +24,7 @@ public class ProfileDataSource extends DataBaseHandler {
                 profile.setLastName(cursor.getString(cursor.getColumnIndex("LastName")));
                 profile.setPhoneNumber(cursor.getString(cursor.getColumnIndex("PhoneNumber")));
                 profile.setAddress(cursor.getString(cursor.getColumnIndex("Address")));
+                profile.setUserName(username);
             }
             cursor.close();
             closeDB();

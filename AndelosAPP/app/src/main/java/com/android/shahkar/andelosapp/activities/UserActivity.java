@@ -31,7 +31,7 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
     UserProfile profile;
     SharedPreferences preferences;
     ProgressBar progress_user;
-    String authToken;
+    String authToken,username;
     ProfileDataSource ds;
 
     @Override
@@ -44,6 +44,7 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
         preferences=getSharedPreferences(
                 getResources().getString(R.string.app_name), MODE_PRIVATE);
         authToken = preferences.getString(ApplicationConstant.TOKEN_PREF_KEY, null);
+        username= preferences.getString(ApplicationConstant.USERNAME_PREF_KEY,"");
 
         ds=new ProfileDataSource(this);
 
@@ -117,7 +118,7 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
     private void saveProfileProcess(final UserProfile profile) {
         //Save profile to server
         APIService api=ServiceGenerator.createService(authToken);
-        Call<ResponseBody> call_profileService=api.SaveUserProfile(profile);
+        Call<ResponseBody> call_profileService=api.SaveUserProfile(profile,username);
         SaveProfileService profile_service=new SaveProfileService(call_profileService);
         profile_service.PostObject(new ResultCallBackObject() {
             @Override
@@ -133,8 +134,10 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
                     pref_editor.putString(ApplicationConstant.FIRSTNAME_PREF_KEY,profile.getFirstName());
                     pref_editor.putString(ApplicationConstant.LASTNAME_PREF_KEY,profile.getLastName());
                     pref_editor.apply();
-                } else
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Saved Successfully!", Toast.LENGTH_LONG).show();
+                }
+                else
+                    Toast.makeText(getApplicationContext(),"save err: "+ message, Toast.LENGTH_LONG).show();
 
             }
         },progress_user);
@@ -143,9 +146,10 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
     }
 
     private ProfileFragment getInitialProfileFragment() {
-         String username= preferences.getString(ApplicationConstant.USERNAME_PREF_KEY,"");
         //get profile from local db
         profile=ds.getUserProfile(username);
+
+        Toast.makeText(getApplicationContext(),"get from local db", Toast.LENGTH_LONG).show();
 
         //if null get from server
         if(profile==null)
@@ -163,6 +167,8 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
                 }
             },progress_user);
 
+            Toast.makeText(getApplicationContext(),"get from server", Toast.LENGTH_LONG).show();
+
         }
 
         //if still null get from shared pref
@@ -172,6 +178,9 @@ public class UserActivity extends AppCompatActivity implements ProfileFragment.P
             profile.setFirstName(preferences.getString(ApplicationConstant.FIRSTNAME_PREF_KEY,""));
             profile.setLastName(preferences.getString(ApplicationConstant.LASTNAME_PREF_KEY,""));
             profile.setUserName(preferences.getString(ApplicationConstant.USERNAME_PREF_KEY,""));
+
+            Toast.makeText(getApplicationContext(),"get from shared pref", Toast.LENGTH_LONG).show();
+
         }
         ProfileFragment fragment = ProfileFragment.newInstance(profile);
         return fragment;
