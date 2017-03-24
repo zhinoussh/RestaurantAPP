@@ -3,14 +3,12 @@ package com.android.shahkar.andelosapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by User on 2/12/2017.
- */
 public class AccessToken implements Parcelable {
 
     private String access_token;
     private String userName;
     private String firstName;
+    private String lastName;
     private int expires_in;
 
     public String getAccessToken() {
@@ -23,6 +21,10 @@ public class AccessToken implements Parcelable {
 
     public String getfirstName() {
         return firstName;
+    }
+
+    public String getlastName() {
+        return lastName;
     }
 
     public int getExpirationTime() {
@@ -39,6 +41,7 @@ public class AccessToken implements Parcelable {
         dest.writeString(this.access_token);
         dest.writeString(this.userName);
         dest.writeString(this.firstName);
+        dest.writeString(this.lastName);
         dest.writeInt(this.expires_in);
     }
 
@@ -49,6 +52,7 @@ public class AccessToken implements Parcelable {
         this.access_token = in.readString();
         this.userName = in.readString();
         this.firstName = in.readString();
+        this.lastName = in.readString();
         this.expires_in = in.readInt();
     }
 

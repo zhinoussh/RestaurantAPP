@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.adapters.OrderAdapter;
-import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.database.OrderDataSource;
 import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.network.UserConnectivity;
@@ -34,8 +34,8 @@ public class CheckoutActivity extends AppCompatActivity {
         TextView txt_review_order = (TextView) findViewById(R.id.txt_reviewOrder);
         txt_review_order.setTypeface(face);
 
-        DataBaseHandler dbHandler = new DataBaseHandler(this);
-        List<Order> lst_orders = dbHandler.getOrderList();
+        OrderDataSource ds=new OrderDataSource(this);
+        List<Order> lst_orders = ds.getOrderList();
         OrderAdapter adapter = new OrderAdapter(lst_orders, this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_orders);
         recyclerView.setAdapter(adapter);

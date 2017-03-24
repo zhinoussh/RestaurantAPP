@@ -4,7 +4,7 @@
     <corners
         android:topLeftRadius="5dp" android:topRightRadius="5dp"/>
     <solid
-        android:color="@color/PrifleButtonColor" />
+        android:color="@color/ProfileButtonColor" />
     <padding android:bottom="5dp"
         android:left="5dp"
         android:right="5dp"

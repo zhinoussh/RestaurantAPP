@@ -13,7 +13,11 @@ public class ApplicationConstant {
     public final static String USERNAME_PREF_KEY = "username";
     public final static String TOKEN_PREF_KEY = "token";
     public final static String FIRSTNAME_PREF_KEY = "firstname";
+    public final static String LASTNAME_PREF_KEY = "lastname";
     public final static String EXPIRE_PREF_KEY = "expire";
+
+    public final static String SAVE_PROFILE = "SAVE_PROFILE";
+    public final static String LOGOUT = "LOGOUT";
 
 
 

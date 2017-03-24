@@ -29,7 +29,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.UserActivity"
-            android:theme="@style/AppTheme.Login" />
+            android:theme="@style/AppTheme.Login"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activities.CheckoutActivity" />
         <activity android:name=".activities.DeliveryDetailActivity"></activity>
     </application>

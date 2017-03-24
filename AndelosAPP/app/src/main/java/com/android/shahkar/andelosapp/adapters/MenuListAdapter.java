@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.database.OrderDataSource;
 import com.android.shahkar.andelosapp.fragments.TopbarFragment;
 import com.android.shahkar.andelosapp.models.Order;
 import com.android.shahkar.andelosapp.models.RestaurantMenuItem;
@@ -88,11 +89,11 @@ public class MenuListAdapter extends ArrayAdapter<RestaurantMenuItem> {
     }
 
     private void AddOrder(ViewHolder holder, RestaurantMenuItem menuItem) {
-        DataBaseHandler dbHandler=new DataBaseHandler(mContext);
+        OrderDataSource ds=new OrderDataSource(mContext);
         int orderNum=Integer.parseInt(holder.txt_orderNum.getText().toString());
         Order newOrder=new Order(menuItem.getMenuItemID()
                 , menuItem.getMenuItemName(),orderNum, menuItem.getPrice());
-        dbHandler.insertOrder(newOrder);
+        ds.insertOrder(newOrder);
 
         FragmentManager fragmentManager=((Activity)mContext).getFragmentManager();
         TopbarFragment topbarFragment=new TopbarFragment();

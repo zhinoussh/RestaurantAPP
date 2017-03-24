@@ -12,7 +12,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     //The Android's default system path of your application database.
     private static final String DB_PATH = "/data/data/com.android.shahkar.andelosapp/databases/";
     private static final String DB_NAME = "restaurantDB.sqlite";
-    public static final int DB_VERSION=1;
+    public static final int DB_VERSION=2;
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;
@@ -117,7 +117,11 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Toast.makeText(mContext,"onUpgrade Database version:"+ oldVersion,Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext,"old version:"+ oldVersion+",new version:"+newVersion ,Toast.LENGTH_LONG).show();
+
+//        String sql="CREATE TABLE [ProfileTable] (Id integer PRIMARY KEY AUTOINCREMENT,FirstName text" +
+//                ",LastName text,PhoneNumber text,Address text,UserName text)";
+//        db.execSQL(sql);
     }
 
     // Add your public helper methods to access and get content from the database.

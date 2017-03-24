@@ -16,7 +16,7 @@ import com.android.shahkar.andelosapp.R;
 import com.android.shahkar.andelosapp.activities.CheckoutActivity;
 import com.android.shahkar.andelosapp.activities.LoginActivity;
 import com.android.shahkar.andelosapp.activities.UserActivity;
-import com.android.shahkar.andelosapp.database.DataBaseHandler;
+import com.android.shahkar.andelosapp.database.OrderDataSource;
 import com.android.shahkar.andelosapp.utils.ApplicationConstant;
 import com.android.shahkar.andelosapp.network.UserConnectivity;
 
@@ -128,8 +128,8 @@ public class TopbarFragment extends Fragment {
             }
         }
 
-        DataBaseHandler dbHandler=new DataBaseHandler(getContext());
-        int count_order_list=dbHandler.getOrderCount();
+        OrderDataSource ds=new OrderDataSource(getContext());
+        int count_order_list=ds.getOrderCount();
         if(count_order_list>0) {
             badge_checkout.setVisibility(View.VISIBLE);
             badge_checkout.setText(count_order_list+"");

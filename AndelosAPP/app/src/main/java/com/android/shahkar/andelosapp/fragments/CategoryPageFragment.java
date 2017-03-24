@@ -55,7 +55,7 @@ public class CategoryPageFragment extends Fragment {
                         PagerAdapter da = new CategoryPagerAdapter(getFragmentManager(), categoryList);
                         pager_category.setAdapter(da);
                     } else
-                        Toast.makeText(getActivity().getBaseContext(), "no category", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "no category", Toast.LENGTH_LONG).show();
                 }
             },p);
         }
